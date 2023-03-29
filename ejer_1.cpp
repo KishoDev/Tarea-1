@@ -25,6 +25,8 @@ int main(){
 	ifstream file;
 	string rut;
 	string dia;
+	string runFile = " ";
+
 	file.open("entrada.txt");
 	
 //Verifica si se abrió la custion
@@ -34,8 +36,18 @@ int main(){
 	}
 
 //Recorre el archivo y guarda cada string y díg. verificador en un uhhhhhhhhhhhhhh
-	file >> rut;
-	cout << rut << endl;
+	file >> runFile;
+while (runFile != " ") {
+	string rutNumeros = runFile.substr(0,8); //Obtiene los primeros dígitos del rut.
+	string digVerificador = runFile.substr(9,1); //Obtiene el dígito verificador.
+	file >> runFile;
+	dia = runFile;	//Obtiene el día
+	file >> runFile;
+
+	//cout << rutNumeros << " " << digVerificador << " " <<  dia << endl;
+	cout << runFile << endl;
+	}
+
 	file.close();
 	return 0;
 }
