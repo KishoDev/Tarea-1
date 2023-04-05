@@ -35,18 +35,13 @@ Persona* unDia(Persona* personas, int dia){
     return 0;
 };
 
-int undia(){
-
-    return 0;
-};
-
 void variosDias(Persona* personas, int cant_dias){
 
 
 };
 
 int main(){
-    //Recibir los datos y guardarlos en un arreglo, para luego Separarlos en sus respectivas variales con ayuda del struct
+    //Recibir los datos y guardarlos en un arreglo, para luego Separarlos en sus respectivas variales con ayuda del struct. Listo
     //Comprobar si los datos estan entregados correctamente (Ver si el nombre no tienen espacios o caracteres especiales)
     //Comprobar si la persona cuenta con tarjeta de la suerte, si no tiene hay que generarla
     //Usamos la funcion variosDias para ver por cuantos días repetir la generacion de puntajes
@@ -57,7 +52,21 @@ int main(){
     //Comprobar cuales personas quieren intercambiar su tarjeta de la suerte y aplicar la funcion Intercambiar tarjeta
     //Calcular el puntaje de cada persona y mostrar en pantalla al ganador del día
 
-    //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje 
+    //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
+    Persona p;
+
+    int n;
+    cin>>n;
+    string personas[n];
+
+    cin.ignore();
+    for(int i=0; i<n; i++){
+        cout<<"escriba un nombre: \n";
+        getline(cin, p.nombre);
+        personas[i]+=p.nombre;
+
+    };    
+    
 
     return 0;
 }
