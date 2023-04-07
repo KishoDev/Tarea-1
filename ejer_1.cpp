@@ -18,7 +18,17 @@ struct SaldoColaborador{
 };
 
 //bool puedeConsumir(string rut, int servicio, string consumos_dia){
-	
+	//bool ticket = true;
+	//leer el archivo consumos del dia
+    	//verificar el dato del rut si es que esta en el archivo de consumos del dia
+    	//Comparar si tiene saldo disponible o no
+    	//En el caso de que el saldo sea 0, cambiar el valor del ticket False
+    	//En caso de que si tenga saldo, mantener el valor del ticket y escribir su rut y servicio en el archivo de consumos del dia
+    	//Cerrar archivo de consumos del dia
+
+    	//Duda existencial que tipo de dato es el saldo?
+
+	//return ticket; //true == Ticket;
 //}
 
 int main(){
