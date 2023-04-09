@@ -40,6 +40,35 @@ void variosDias(Persona* personas, int cant_dias){
 
 
 };
+void filtrardatos(dato){ //conectar las variables al codigo y a los structs, escribir bien las variables
+    
+    string nombre;
+    char fecha[11];
+    bool inter;
+    
+    int i=0;
+    while(dato[i] != ' '){
+        cout<<dato[i]<<endl;
+        nombre+=dato[i];
+        i++;
+    };
+    i++;
+    
+    for(int r=0 ;r<10; r++){
+        rut[r]=dato[i];
+        cout<<r<<"_"<<dato[i]<<endl;
+        i++;
+    };
+    i++;
+    
+    if(dato[i] == '1'){
+        inter=true;
+    }else{
+        inter=false;
+    };
+    
+    
+};
 
 int main(){
     //Recibir los datos y guardarlos en un arreglo, para luego Separarlos en sus respectivas variales con ayuda del struct. Listo
