@@ -59,7 +59,7 @@ int main(){
     int n;
     cin>>n;
 
-    personas = new string[num_p]    
+    personas = new string[n]    
     cin.ignore();
     for(int i=0; i<n; i++){
         cout<<"escriba un nombre: \n";
