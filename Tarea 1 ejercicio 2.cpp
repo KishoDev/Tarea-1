@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -54,11 +55,11 @@ int main(){
 
     //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
     Persona p;
-
+    string *personas;
     int n;
     cin>>n;
-    string personas[n];
 
+    personas = new string[num_p]    
     cin.ignore();
     for(int i=0; i<n; i++){
         cout<<"escriba un nombre: \n";
@@ -67,7 +68,7 @@ int main(){
 
     };    
     
-
+    delete[] personas;
     return 0;
 }
 
