@@ -10,7 +10,7 @@ int const SERV_ONCE = 2;
 int const SERV_CENA = 3;
 
 struct SaldoColaborador{
-	string rut;
+	char rut[11];
 	int saldo_desayuno;
 	int saldo_almuerzo;
 	int saldo_once;
@@ -18,46 +18,83 @@ struct SaldoColaborador{
 };
 
 //bool puedeConsumir(string rut, int servicio, string consumos_dia){
-	//bool ticket = true;
-	//leer el archivo consumos del dia
-    	//verificar el dato del rut si es que esta en el archivo de consumos del dia
-    	//Comparar si tiene saldo disponible o no
-    	//En el caso de que el saldo sea 0, cambiar el valor del ticket False
-    	//En caso de que si tenga saldo, mantener el valor del ticket y escribir su rut y servicio en el archivo de consumos del dia
-    	//Cerrar archivo de consumos del dia
-
-    	//Duda existencial que tipo de dato es el saldo?
-
-	//return ticket; //true == Ticket;
+	
 //}
 
-int main(){
+int readFileAscii(string fileIn){
 	ifstream file;
-	string rut;
-	string dia;
-	string runFile = " ";
+	string	rut;
+	string 	servicio;
+	string 	runFile = "";
+	string	dato = "";
+	int servicio;
 
-	file.open("entrada.txt");
-	
+	file.open(fileIn);
+
 //Verifica si se abrió la custion
-	if (!file.is_open()){ 
-		cout << "Error al abrir el archivo." << endl;
-		exit(1);
+	if (!file.is_open()){
+		cerr << "Error al abrir el archivo." << endl;
+		return 1;
 	}
 
-//Recorre el archivo y guarda cada string y díg. verificador en un uhhhhhhhhhhhhhh
-	file >> runFile;
-while (runFile != " ") {
-	string rutNumeros = runFile.substr(0,8); //Obtiene los primeros dígitos del rut.
-	string digVerificador = runFile.substr(9,1); //Obtiene el dígito verificador.
-	file >> runFile;
-	dia = runFile;	//Obtiene el día
-	file >> runFile;
+	
+	while(!file.eof()) {
+		getline(file, dato);
+		rut = dato.substr(0,9);
+		dia = dato.substr(9,dato.length() - 1);
 
-	//cout << rutNumeros << " " << digVerificador << " " <<  dia << endl;
-	cout << runFile << endl;
+		if (dia == "DESAYUNO"){
+			servicio = 0
+		} else if ()
+
+
+
+		if (puedeConsumir(rut, servicio, colaborador)) {
+			cout << ":)" << endl;
+		} else {
+			cout << ":(" << endl;
+		}
+
+	} 
+
+	file.close();
+	return 0; 
+}
+
+
+int readFileBinary(string archivo) {
+	int rDatos;
+	ifstream file;
+	file.open(archivo, ios::binary);
+	
+	//Si ocurre algún error al abrir el archivo
+	if (!file.is_open()){
+		cerr << "Error al abrir el archivo." << endl;
+		return 1;
+	}
+
+	file.read((char*)&rDatos, sizeof(int));
+	int numStruct = rDatos;
+	SaldoColaborador colaborador[numStruct];
+
+	for (int i = 0; i < numStruct; ++i) {
+		file.read((char*)&colaborador[i], sizeof(SaldoColaborador));
 	}
 
 	file.close();
+	return 0;
+}
+
+
+bool puedeConsumir (char* rut, int servicio, string consumos_dia) {
+	
+	return false
+}
+
+
+
+int main() {
+	readFileBinary("saldos.bin");
+	readFileAscii("entrada.txt");
 	return 0;
 }
