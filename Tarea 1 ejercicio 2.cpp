@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<stdlib.h>
+#include<cstring>
 
 using namespace std;
 
@@ -85,6 +86,7 @@ int main(){
     //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
     Persona p, datoP, *personas;
     int m, dias;
+    cout<<"Indique cuantas personas va a registrar: "<<endl;
     cin>>m;
     
     string *listaPersonas = new string[m];
