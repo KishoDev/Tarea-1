@@ -83,21 +83,57 @@ int main(){
     //Calcular el puntaje de cada persona y mostrar en pantalla al ganador del día
 
     //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
-    Persona p;
-    string *personas;
-    int n;
-    cin>>n;
-
-    personas = new string[n]    
+    Persona p, datoP, *personas;
+    int m, dias;
+    cin>>m;
+    
+    string *listaPersonas = new string[m];
+    
     cin.ignore();
-    for(int i=0; i<n; i++){
+    for(int i=0; i<m; i++){
         cout<<"escriba un nombre: \n";
         getline(cin, p.nombre);
-        personas[i]+=p.nombre;
+        listaPersonas[i]+=p.nombre;
 
-    };    
+    }
+
+    cout<<"Ingrese las cantidad de dias: ";
+    cin>>dias;
+
+    personas= new Persona[m];
+    for(int i=0; i<m; i++){
+        string dato=listaPersonas[i];
+        string nombre;
+
+
+        int j=0;
+        while(dato[j] != ' '){
+            nombre+=dato[j];
+            j++;
+        };
+        j++;
     
+        for(int r=0 ;r<9; r++){
+            strcpy(&personas[i].fecha[r],&dato[j]);
+            j++;
+        };
+        j++;
+    
+        if(dato[j] == '1'){
+            personas[i].quiere_intercambiar=true;
+        }else{
+            personas[i].quiere_intercambiar=false;
+        };
+        personas[i].nombre=nombre;
+
+        cout<<personas[i].nombre<<endl;
+        cout<<personas[i].fecha<<endl;
+        cout<<personas[i].quiere_intercambiar<<endl;
+
+    };
+
     delete[] personas;
+    delete[] listaPersonas;
     return 0;
 }
 
