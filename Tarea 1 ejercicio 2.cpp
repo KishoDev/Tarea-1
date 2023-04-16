@@ -32,63 +32,59 @@ int puntaje(Persona* p1){
     return 0;
 };
 
-Persona* unDia(Persona* personas, int dia){
 
-    return 0;
+Persona* unDia(Persona personas, int dia){ //Verificar las personas que tienen que intercambiar tarjetas y los que tienen que comprar una tarjeta en el primer dia
+    Persona *ganadorDia= &personas[0];
+    int puntos= 0, puntosMax= -1;
+
+    int size=sizeof(personas)/sizeof(personas[0]); //verificar de que funcione
+
+    for(int i = 0; i<size; i++){
+    
+        if(dia == 1){
+            for(int j=0; j<size; j++){
+                int m=personas.nombre.length();
+                //comprarTarjeta(personas.nombre, dia,m )
+            }
+        }
+        
+        if(personas[i].quiere_intercambiar==true){
+            for(int j=i; j<size; j++){
+                j++;
+                if(personas[j].quiere_intercambiar==true && j<size){
+                    //intercambiarTarjetas(personas[i], personas[j]);
+                }
+            }
+        }
+
+        puntos= puntaje(personas[i]);
+        if(puntos>puntosMax){
+            puntosMax=puntos;
+            ganadorDia= &personas[i];
+        }
+
+    }
+
+    return ganadorDia;
 };
 
-void variosDias(Persona* personas, int cant_dias){
+void variosDias(Persona* personas,int cant_dias ){
+    Persona *ganador= new Persona[1];
+
+    for(int i=1; i<=cant_dias; i++){
+        ganador=unDia(*personas, cant_dias);
 
 
-};
-void filtrardatos(dato){ //conectar las variables al codigo y a los structs, escribir bien las variables
-    
-    string nombre;
-    char fecha[11];
-    bool inter;
-    
-    int i=0;
-    while(dato[i] != ' '){
-        cout<<dato[i]<<endl;
-        nombre+=dato[i];
-        i++;
-    };
-    i++;
-    
-    for(int r=0 ;r<10; r++){
-        rut[r]=dato[i];
-        cout<<r<<"_"<<dato[i]<<endl;
-        i++;
-    };
-    i++;
-    
-    if(dato[i] == '1'){
-        inter=true;
-    }else{
-        inter=false;
-    };
-    
-    
+        cout<<ganador.nombre<<'\0'<<ganador.fecha<<'\0'<<puntaje(ganador)<<endl;
+    }
+    delete[] ganador;
 };
 
-int main(){
-    //Recibir los datos y guardarlos en un arreglo, para luego Separarlos en sus respectivas variales con ayuda del struct. Listo
-    //Comprobar si los datos estan entregados correctamente (Ver si el nombre no tienen espacios o caracteres especiales)
-    //Comprobar si la persona cuenta con tarjeta de la suerte, si no tiene hay que generarla
-    //Usamos la funcion variosDias para ver por cuantos días repetir la generacion de puntajes
 
-    //Ahora el codigo comienza a trabajar
+void ListasDeLaSuerte(int &m){
+    Persona p, *personas;
+    int cant_dias;
 
-    //Comienza un ciclo hasta que se terminen los días
-    //Comprobar cuales personas quieren intercambiar su tarjeta de la suerte y aplicar la funcion Intercambiar tarjeta
-    //Calcular el puntaje de cada persona y mostrar en pantalla al ganador del día
-
-    //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
-    Persona p, datoP, *personas;
-    int m, dias;
-    cout<<"Indique cuantas personas va a registrar: "<<endl;
-    cin>>m;
-    
     string *listaPersonas = new string[m];
     
     cin.ignore();
@@ -96,19 +92,17 @@ int main(){
         cout<<"escriba un nombre: \n";
         getline(cin, p.nombre);
         listaPersonas[i]+=p.nombre;
-
     }
 
     cout<<"Ingrese las cantidad de dias: ";
-    cin>>dias;
+    cin>>cant_dias;
 
     personas= new Persona[m];
     for(int i=0; i<m; i++){
         string dato=listaPersonas[i];
         string nombre;
-
-
         int j=0;
+
         while(dato[j] != ' '){
             nombre+=dato[j];
             j++;
@@ -127,15 +121,33 @@ int main(){
             personas[i].quiere_intercambiar=false;
         };
         personas[i].nombre=nombre;
-
-        cout<<personas[i].nombre<<endl;
-        cout<<personas[i].fecha<<endl;
-        cout<<personas[i].quiere_intercambiar<<endl;
-
+        personas[i].tamanio_tarjeta=0;
+        personas[i].tarjeta=NULL;
     };
 
-    delete[] personas;
+
+    variosDias(personas, cant_dias);
     delete[] listaPersonas;
+    delete[] personas;
+};
+
+int main(){
+    //Recibir los datos y guardarlos en un arreglo, para luego Separarlos en sus respectivas variales con ayuda del struct. Listo
+    //Comprobar si los datos estan entregados correctamente (Ver si el nombre no tienen espacios o caracteres especiales)
+    //Comprobar si la persona cuenta con tarjeta de la suerte, si no tiene hay que generarla
+    //Usamos la funcion variosDias para ver por cuantos días repetir la generacion de puntajes
+
+    //Ahora el codigo comienza a trabajar
+
+    //Comienza un ciclo hasta que se terminen los días
+    //Comprobar cuales personas quieren intercambiar su tarjeta de la suerte y aplicar la funcion Intercambiar tarjeta
+    //Calcular el puntaje de cada persona y mostrar en pantalla al ganador del día
+
+    //Una vez terminado el ciclo, se muestra en pantalla la persona que obtuvo un mayor puntaje
+    int m;
+    cin>>m;
+    ListasDeLaSuerte(m);
+
     return 0;
 }
 
