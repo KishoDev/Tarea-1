@@ -1,3 +1,11 @@
 Alvaro Aceituno Rol:202273520-1 Paralelo:203
 Vicente Galaz Rol: Paralelo:
 Giselle Goméz Rol:202273591-0 Paralelo:200
+
+Lo que programo cada uno:
+  Ejercicio 1:
+    Vicente programo todo.
+  
+  Ejercicio 2:
+    Alvaro programo las funciones Lista de la suerte, variosDias y unDia.
+    Giselle programo las funciones comprarTarjeta, intercambiarTarjeta, puntaje.
