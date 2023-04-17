@@ -64,6 +64,7 @@ Persona* unDia(Persona* personas, int dia){
         for(int k=0; k<size; k++){
             int m = personas[k].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
             personas[k].tamanio_tarjeta = m;
+            delete[] personas[k].tarjeta;
             personas[k].tarjeta=comprarTarjeta(personas[k].nombre, dia, m );
         }
     }
@@ -73,6 +74,7 @@ Persona* unDia(Persona* personas, int dia){
         if(i!=0){
             int m = personas[i].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
             personas[i].tamanio_tarjeta = m;
+            delete[] personas[i].tarjeta;
             personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, m );
         }
     
@@ -106,10 +108,13 @@ void variosDias(Persona* personas,int cant_dias ){
 
 
         cout<<ganador->nombre<<' '<<ganador->fecha<<' '<<puntaje(ganador)<<endl;
-
     }
-    delete[] ganador;
+
+    
+    delete[] ganador -> tarjeta;
+    delete[] personas;
 };
+
 
 
 void ListasDeLaSuerte(int l){
@@ -138,27 +143,32 @@ void ListasDeLaSuerte(int l){
         while(dato[j] != ' '){
             nombre+=dato[j];
             j++;
-        };
+        }
+
         j++;
     
         for(int r=0 ;r<9; r++){
             strcpy(&personas[i].fecha[r],&dato[j]);
             j++;
-        };
+        }
+
         j++;
     
         if(dato[j] == '1'){
             personas[i].quiere_intercambiar='1';
         }else{
             personas[i].quiere_intercambiar='0';
-        };
+        }
+
         personas[i].nombre=nombre;
         personas[i].tamanio_tarjeta=0;
         personas[i].tarjeta=NULL;
-    };
+    }
 
 
     variosDias(personas, cant_dias);
+
+    delete[] p.tarjeta;
     delete[] listaPersonas;
     delete[] personas;
 };
