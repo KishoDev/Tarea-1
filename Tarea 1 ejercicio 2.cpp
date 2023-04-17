@@ -36,21 +36,21 @@ void intercambiarTarjeta(Persona* p1, Persona* p2){
 };
 
 int puntaje(Persona* p1){
-    int puntaje = 0, sum, n;
+    int puntaje = 0, sum;
     int arr[9];
     int j = 0;
 
     for(int i=0; i<10; i++){
-        if (n[i] == '-'){
+        if (p1->fecha[i] == '-'){
             j += 1;
         }else{
             
-            arr[i-j] = (n[i]);
+            arr[i-j] = (p1->fecha[i]);
         };
     };
 
     for (int z=0; z< (p1->tamanio_tarjeta); z++){
-        sum = p1->tarjeta[z]*arr[z%10];
+        sum = (p1->tarjeta[z])*arr[z%10];
         puntaje += sum;
         cout<<puntaje<<endl;
         cout<<"-------------------------"<<endl;
@@ -83,7 +83,7 @@ Persona* unDia(Persona* personas, int dia){
             }
         }
 
-        puntos= puntaje(personas[i]);
+        puntos= puntaje(&personas[i]);
         if(puntos>puntosMax){
             puntosMax=puntos;
             ganadorDia= &personas[i];
@@ -99,7 +99,7 @@ void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
 
     for(int i=1; i<=cant_dias; i++){
-        ganador=unDia(*personas, cant_dias);
+        ganador=unDia(personas, cant_dias);
 
 
         cout<<ganador->nombre<<'\0'<<ganador->fecha<<'\0'<<puntaje(ganador)<<endl;
@@ -144,9 +144,9 @@ void ListasDeLaSuerte(int l){
         j++;
     
         if(dato[j] == '1'){
-            personas[i].quiere_intercambiar=true;
+            personas[i].quiere_intercambiar='1';
         }else{
-            personas[i].quiere_intercambiar=false;
+            personas[i].quiere_intercambiar='0';
         };
         personas[i].nombre=nombre;
         personas[i].tamanio_tarjeta=0;
@@ -154,7 +154,7 @@ void ListasDeLaSuerte(int l){
     };
 
 
-    //variosDias(personas, cant_dias);
+    variosDias(personas, cant_dias);
     delete[] listaPersonas;
     delete[] personas;
 };
