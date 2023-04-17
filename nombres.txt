@@ -1,6 +1,6 @@
-Alvaro Aceituno Rol:202273520-1 Paralelo:203
-Vicente Galaz Rol: Paralelo:
-Giselle Goméz Rol:202273591-0 Paralelo:200
+Nombre: Alvaro Aceituno Rol: 202273520-1 Paralelo: 203
+Nombre: Vicente Galaz Rol: 202273554-6 Paralelo: 203
+Nombre: Giselle Goméz Rol: 202273591-0 Paralelo: 200
 
 Lo que programo cada uno:
   Ejercicio 1:
