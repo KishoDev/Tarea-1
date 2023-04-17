@@ -51,17 +51,17 @@ int puntaje(Persona* p1){
 };
 
 Persona* unDia(Persona* personas, int dia){ 
-    //Resumen: 
-    Persona *ganadorDia= &personas[0];
-    int puntos= 0, puntosMax= -1;
+    //Resumen: Esta función se encarga de verificar que todas las personas tengan una tarjeta de la suerte, ayudar a filtrar quienes quieren hacer el intercambio de tarjetas de la suerte y ver que persona sacó el mayor puntaje.
+    Persona *ganadorDia= &personas[0];//Un arreglo de struct que guarda los datos del ganador del dia.
+    int puntos= 0, puntosMax= -1;//Dos variables tipo entero que se encargan de guardar los puntos y el que saco más puntos
 
-    int size=sizeof(personas)/sizeof(personas[0]); //verificar de que funcione
+    int size=sizeof(personas)/sizeof(personas[0]);//*Calcula el largo del arreglo personas.
 
     for(int i = 0; i<size; i++){
     
         if(dia == 1){
             for(int j=0; j<size; j++){
-                int m= personas->nombre.length();
+                int m= personas->nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
                 comprarTarjeta(personas->nombre, dia,m );
             }
         }
@@ -83,12 +83,12 @@ Persona* unDia(Persona* personas, int dia){
 
     }
 
-    return ganadorDia;
+    return ganadorDia;// retorna los datos del ganador del dia
 };
 
 void variosDias(Persona* personas,int cant_dias ){
-    //Resumen: 
-    Persona *ganador= new Persona[1];
+    //Resumen: Se encaraga en mostrar por pantalla los resultados de los ganadores de los dias.
+    Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
 
     for(int i=1; i<=cant_dias; i++){
         ganador=unDia(&personas, cant_dias);
@@ -101,15 +101,14 @@ void variosDias(Persona* personas,int cant_dias ){
 
 
 void ListasDeLaSuerte(int &m){
-    //Resumen:
-    Persona p, *personas; //
-    int cant_dias;  //
+    //Resumen: Recibe todos los parametros necesarios y los trabaja para que después esten listos para ser usados en las otras funciones
+    Persona p, *personas; //Se crean dos variables, p para recibir los datos y aprovechar las virtudes del struct y personas el arreglo donde se guardaran los datos de entrada
+    int cant_dias;  //se declara una variable para las cantidades de dias
 
-    string *listaPersonas = new string[m];//
+    string *listaPersonas = new string[m];//Se crea un arreglo de string para guardar los datos de las diferentes personas
     
     cin.ignore();
     for(int i=0; i<m; i++){
-        cout<<"escriba un nombre: \n";
         getline(cin, p.nombre);
         listaPersonas[i]+=p.nombre;
     }
@@ -117,11 +116,11 @@ void ListasDeLaSuerte(int &m){
     cout<<"Ingrese las cantidad de dias: ";
     cin>>cant_dias;
 
-    personas= new Persona[m];//
+    personas= new Persona[m];//Se crea un arreglo de struct para que después puedan ser usados en las futuras funciones.
     for(int i=0; i<m; i++){
-        string dato=listaPersonas[i];
-        string nombre;
-        int j=0;
+        string dato=listaPersonas[i];//Guarda un dato del arreglo lista de personas como un string.
+        string nombre;//Un string para guardar el nombre de la persona.
+        int j=0;//Es un indice que ayuda para recorrer cada caracter del dato.
 
         while(dato[j] != ' '){
             nombre+=dato[j];
@@ -152,14 +151,10 @@ void ListasDeLaSuerte(int &m){
 };
 
 int main(){
+    int m;
     cin>>m;
     ListasDeLaSuerte(m);
 
     return 0;
 }
 
-//Dudas o cuestionaimentos
-/*
-
-
-*/
