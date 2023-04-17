@@ -18,12 +18,22 @@ int l;
 int* comprarTarjeta(string nombre, int dia, int &m){
     //Resumen: Crea las tarjetas de enteros para las personas
     int* arr = new int[m]; 
+    cout<<dia<<endl;
+    if(dia==1){
+        for(int i=0; i<m; i++){
+            arr[i]=0;
+        }
+    }else{
+        for(int j=0; j<m; j++){
+            arr[j] = nombre[j] % dia ;
 
-    //inicializar un arreglo
-    for (int i = 0; i <m; i++){
-        // cuando dia sea 1, el arreglo sera de 0
-        arr[i] = nombre[i] % dia ; 
+        }
     }
+    
+    for(int z=0; z<m;z++){
+        cout<<arr[z]<<',';
+    }
+
     return arr;
 };
 
@@ -37,20 +47,9 @@ void intercambiarTarjeta(Persona* p1, Persona* p2){
 
 int puntaje(Persona* p1){
     int puntaje = 0, sum;
-    int arr[9];
-    int j = 0;
-
-    for(int i=0; i<10; i++){
-        if (p1->fecha[i] == '-'){
-            j += 1;
-        }else{
-            
-            arr[i-j] = (p1->fecha[i]);
-        };
-    };
 
     for (int z=0; z< (p1->tamanio_tarjeta); z++){
-        sum = (p1->tarjeta[z])*arr[z%10];
+        sum = (p1->tarjeta[z])* p1->fecha[z%10];
         puntaje += sum;
         cout<<puntaje<<endl;
         cout<<"-------------------------"<<endl;
@@ -67,11 +66,10 @@ Persona* unDia(Persona* personas, int dia){
     int size=l; //*Calcula el largo del arreglo personas.
 
     for(int i = 0; i<size; i++){
-    
-
         int m = personas[i].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
         personas[i].tamanio_tarjeta = m;
-        comprarTarjeta(personas[i].nombre, dia, m );
+        cout<<dia<<endl;
+        personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, m );
 
         
         if(personas[i].quiere_intercambiar==true){
@@ -99,7 +97,8 @@ void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
 
     for(int i=1; i<=cant_dias; i++){
-        ganador=unDia(personas, cant_dias);
+        cout<<"Dia "<<1<<endl;
+        ganador=unDia(personas, i);
 
 
         cout<<ganador->nombre<<'\0'<<ganador->fecha<<'\0'<<puntaje(ganador)<<endl;
