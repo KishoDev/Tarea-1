@@ -132,7 +132,7 @@ void ListasDeLaSuerte(int l){
     cout<<"Ingrese las cantidad de dias: ";
     cin>>cant_dias;
 
-    personas= new Persona[l]; //Se crea un arreglo de struct para que después puedan ser usados en las futuras funciones.
+    personas = new Persona[l]; //Se crea un arreglo de struct para que después puedan ser usados en las futuras funciones.
     for(int i=0; i<l; i++){
         string dato=listaPersonas[i];//Guarda el dato de una persona como un string.
         string nombre;//Un string para guardar el nombre de la persona.
@@ -167,6 +167,9 @@ void ListasDeLaSuerte(int l){
 
     variosDias(personas, cant_dias);
 
+    for (int i = 0; i < l; i++){
+        delete[] personas[i].tarjeta;
+    }
     //delete[] p.tarjeta;
     delete[] listaPersonas;
     delete[] personas;
