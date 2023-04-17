@@ -77,11 +77,6 @@ Persona* unDia(Persona* personas, int dia){
 
 
     for(int i = 0; i<size; i++){
-        int m = personas[i].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
-        personas[i].tamanio_tarjeta = m;
-        cout<<dia<<endl;
-        personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, m );
-
         
         if(personas[i].quiere_intercambiar==true){
             for(int j=i; j<size; j++){
