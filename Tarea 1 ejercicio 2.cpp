@@ -27,11 +27,11 @@ int* comprarTarjeta(string nombre, int dia, int &m){
     }else{
         for(int j=0; j<m; j++){
             arr[j] = nombre[j] % dia ;
-
         }
-    }
 
-    return arr;
+
+    
+}    return arr;
 };
 
 void intercambiarTarjeta(Persona* p1, Persona* p2){
@@ -50,6 +50,7 @@ int puntaje(Persona* p1){
         puntaje += sum;
     }
 
+    delete[] p1 -> tarjeta; 
     return puntaje;
 };
 
