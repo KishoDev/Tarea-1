@@ -14,7 +14,7 @@ struct Persona{
 };
 
 int* comprarTarjeta(string nombre, int dia, int &m){
-    //resumen
+    //Resumen: Crea las tarjetas de enteros para las personas
 
     m = nombre.length(); //por si m no tiene valor
     int* arr = new int[m]; 
@@ -29,7 +29,7 @@ int* comprarTarjeta(string nombre, int dia, int &m){
 
 
 void intercambiarTarjeta(Persona* p1, Persona* p2){
-    //resumen
+    //Resumen: Intercambia las tarjetas de las dos personas.
     int* aux = 0;
     aux = p1->tarjeta;
     p1->tarjeta = p2->tarjeta;
@@ -38,7 +38,7 @@ void intercambiarTarjeta(Persona* p1, Persona* p2){
 
 
 int puntaje(Persona* p1){
-    //resumen
+    //Resumen: Calcula el puntaje de la persona.
     int n = p1->tamanio_tarjeta;
 
     int puntaje = 0;
