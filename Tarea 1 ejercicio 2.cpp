@@ -30,10 +30,6 @@ int* comprarTarjeta(string nombre, int dia, int &m){
 
         }
     }
-    
-    for(int z=0; z<m;z++){
-        cout<<arr[z]<<',';
-    }
 
     return arr;
 };
@@ -52,8 +48,6 @@ int puntaje(Persona* p1){
     for (int z=0; z< (p1->tamanio_tarjeta); z++){
         sum = (p1->tarjeta[z])* p1->fecha[z%10];
         puntaje += sum;
-        cout<<puntaje<<endl;
-        cout<<"-------------------------"<<endl;
     }
 
     return puntaje;
@@ -71,13 +65,17 @@ Persona* unDia(Persona* personas, int dia){
             int m = personas[k].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
             personas[k].tamanio_tarjeta = m;
             personas[k].tarjeta=comprarTarjeta(personas[k].nombre, dia, m );
-            cout<<personas[k].tarjeta<<endl;
         }
     }
 
 
     for(int i = 0; i<size; i++){
-        
+        if(i!=0){
+            int m = personas[i].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
+            personas[i].tamanio_tarjeta = m;
+            personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, m );
+        }
+    
         if(personas[i].quiere_intercambiar==true){
             for(int j=i; j<size; j++){
                 j++;
@@ -103,13 +101,13 @@ void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
 
     for(int i=1; i<=cant_dias; i++){
-        cout<<"Dia "<<1<<endl;
+        cout<<"Dia "<<i<<endl;
         ganador=unDia(personas, i);
 
 
-        cout<<ganador->nombre<<'\0'<<ganador->fecha<<'\0'<<puntaje(ganador)<<endl;
+        cout<<ganador->nombre<<' '<<ganador->fecha<<' '<<puntaje(ganador)<<endl;
+        delete[] ganador;
     }
-    delete[] ganador;
 };
 
 
