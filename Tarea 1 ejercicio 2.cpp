@@ -152,7 +152,7 @@ void ListasDeLaSuerte(int &l){
 int l;
 int main(){
     cin>>l;
-    ListasDeLaSuerte(m);
+    ListasDeLaSuerte(l);
 
     return 0;
 }
