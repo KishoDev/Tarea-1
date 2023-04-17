@@ -106,8 +106,9 @@ void variosDias(Persona* personas,int cant_dias ){
 
 
         cout<<ganador->nombre<<' '<<ganador->fecha<<' '<<puntaje(ganador)<<endl;
-        delete[] ganador;
+
     }
+    delete[] ganador;
 };
 
 
