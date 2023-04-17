@@ -55,7 +55,7 @@ Persona* unDia(Persona* personas, int dia){
     Persona *ganadorDia= &personas[0];//Un arreglo de struct que guarda los datos del ganador del dia.
     int puntos= 0, puntosMax= -1;//Dos variables tipo entero que se encargan de guardar los puntos y el que saco más puntos
 
-    int size=sizeof(personas)/sizeof(personas[0]);//*Calcula el largo del arreglo personas.
+    int size=l;//*Calcula el largo del arreglo personas.
 
     for(int i = 0; i<size; i++){
     
@@ -100,12 +100,12 @@ void variosDias(Persona* personas,int cant_dias ){
 };
 
 
-void ListasDeLaSuerte(int &m){
+void ListasDeLaSuerte(int &l){
     //Resumen: Recibe todos los parametros necesarios y los trabaja para que después esten listos para ser usados en las otras funciones
     Persona p, *personas; //Se crean dos variables, p para recibir los datos y aprovechar las virtudes del struct y personas el arreglo donde se guardaran los datos de entrada
     int cant_dias;  //se declara una variable para las cantidades de dias
 
-    string *listaPersonas = new string[m];//Se crea un arreglo de string para guardar los datos de las diferentes personas
+    string *listaPersonas = new string[l];//Se crea un arreglo de string para guardar los datos de las diferentes personas
     
     cin.ignore();
     for(int i=0; i<m; i++){
@@ -149,10 +149,9 @@ void ListasDeLaSuerte(int &m){
     delete[] listaPersonas;
     delete[] personas;
 };
-
+int l;
 int main(){
-    int m;
-    cin>>m;
+    cin>>l;
     ListasDeLaSuerte(m);
 
     return 0;
