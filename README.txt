@@ -1,3 +1,3 @@
 # Tarea-1
 
-uwu
+Esta tarea se compiló con g++.
