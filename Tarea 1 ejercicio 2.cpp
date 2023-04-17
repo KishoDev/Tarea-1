@@ -50,7 +50,7 @@ int puntaje(Persona* p1){
 
 };
 
-Persona* unDia(Persona personas, int dia){ 
+Persona* unDia(Persona* personas, int dia){ 
     //Resumen: 
     Persona *ganadorDia= &personas[0];
     int puntos= 0, puntosMax= -1;
@@ -61,8 +61,8 @@ Persona* unDia(Persona personas, int dia){
     
         if(dia == 1){
             for(int j=0; j<size; j++){
-                int m=personas.nombre.length();
-                comprarTarjeta(personas.nombre, dia,m );
+                int m= personas->nombre.length();
+                comprarTarjeta(personas->nombre, dia,m );
             }
         }
         
@@ -70,12 +70,12 @@ Persona* unDia(Persona personas, int dia){
             for(int j=i; j<size; j++){
                 j++;
                 if(personas[j].quiere_intercambiar==true && j<size){
-                    intercambiarTarjeta(personas[i], personas[j]);
+                    intercambiarTarjeta(&personas[i], &personas[j]);
                 }
             }
         }
 
-        puntos= puntaje(personas[i]);
+        puntos= puntaje(&personas[i]);
         if(puntos>puntosMax){
             puntosMax=puntos;
             ganadorDia= &personas[i];
@@ -91,7 +91,7 @@ void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador= new Persona[1];
 
     for(int i=1; i<=cant_dias; i++){
-        ganador=unDia(*personas, cant_dias);
+        ganador=unDia(&personas, cant_dias);
 
 
         cout<<ganador->nombre<<'\0'<<ganador->fecha<<'\0'<<puntaje(ganador)<<endl;
