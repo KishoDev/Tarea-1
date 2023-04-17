@@ -50,7 +50,7 @@ int puntaje(Persona* p1){
         puntaje += sum;
     }
 
-    delete[] p1 -> tarjeta; 
+    //delete[] p1 -> tarjeta; 
     return puntaje;
 };
 
@@ -66,7 +66,7 @@ Persona* unDia(Persona* personas, int dia){
             int m = personas[k].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
             personas[k].tamanio_tarjeta = m;
             delete[] personas[k].tarjeta;
-            personas[k].tarjeta=comprarTarjeta(personas[k].nombre, dia, m );
+            personas[k].tarjeta = comprarTarjeta(personas[k].nombre, dia, m );
         }
     }
 
@@ -95,26 +95,23 @@ Persona* unDia(Persona* personas, int dia){
         }
 
     }
-
     return ganadorDia;// retorna los datos del ganador del dia
 }
 
 void variosDias(Persona* personas,int cant_dias ){
     //Resumen: Se encaraga en mostrar por pantalla los resultados de los ganadores de los dias.
-    Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
+    //Persona *ganador= new Persona[1];//Es un arreglo de struct que se encarga de guardar los datos del ganador para mostrarlos en pantalla.
 
+    Persona *ganador;
     for(int i=1; i<=cant_dias; i++){
         cout<<"Dia "<<i<<endl;
-        ganador=unDia(personas, i);
+        ganador = unDia(personas, i);
 
 
         cout<<ganador->nombre<<' '<<ganador->fecha<<' '<<puntaje(ganador)<<endl;
     }
 
-    
-    delete[] ganador -> tarjeta;
-    delete[] personas;
-};
+}
 
 
 
@@ -161,6 +158,7 @@ void ListasDeLaSuerte(int l){
             personas[i].quiere_intercambiar='0';
         }
 
+        //delete[] personas.nombre;
         personas[i].nombre=nombre;
         personas[i].tamanio_tarjeta=0;
         personas[i].tarjeta=NULL;
@@ -169,7 +167,7 @@ void ListasDeLaSuerte(int l){
 
     variosDias(personas, cant_dias);
 
-    delete[] p.tarjeta;
+    //delete[] p.tarjeta;
     delete[] listaPersonas;
     delete[] personas;
 };
@@ -180,3 +178,4 @@ int main(){
 
     return 0;
 }
+
