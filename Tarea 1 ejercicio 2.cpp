@@ -14,25 +14,41 @@ struct Persona{
 };
 
 int* comprarTarjeta(string nombre, int dia, int &m){
-    //Resumen: Crea las tarjetas de la suerte de las personas
+    //resumen
 
-    return 0; //Retorna un arreglo de enteros
+    m = nombre.length(); //por si m no tiene valor
+    int* arr = new int[m]; 
+
+    //inicializar un arreglo
+    for (int i = 0; i <m; i++){
+        // cuando dia sea 1, el arreglo sera de 0
+        arr[i] = nombre[i] % dia ; 
+    }
+    return arr;
 };
+
 
 void intercambiarTarjeta(Persona* p1, Persona* p2){
-    //Resumen: 
-
-
-
+    //resumen
+    int* aux = 0;
+    aux = p1->tarjeta;
+    p1->tarjeta = p2->tarjeta;
+    p2->tarjeta = aux;
 };
+
 
 int puntaje(Persona* p1){
-    //Resumen: 
+    //resumen
+    int n = p1->tamanio_tarjeta;
 
+    int puntaje = 0;
+    
+    for (int i=0; i< n; i++){
+        puntaje += (p1->tarjeta[i]) * (p1->fecha[i%10]);
+    }
+    return puntaje;
 
-    return 0;
 };
-
 
 Persona* unDia(Persona personas, int dia){ 
     //Resumen: 
@@ -46,7 +62,7 @@ Persona* unDia(Persona personas, int dia){
         if(dia == 1){
             for(int j=0; j<size; j++){
                 int m=personas.nombre.length();
-                comprarTarjeta(personas.nombre, dia,m )
+                comprarTarjeta(personas.nombre, dia,m );
             }
         }
         
@@ -54,7 +70,7 @@ Persona* unDia(Persona personas, int dia){
             for(int j=i; j<size; j++){
                 j++;
                 if(personas[j].quiere_intercambiar==true && j<size){
-                    intercambiarTarjetas(personas[i], personas[j]);
+                    intercambiarTarjeta(personas[i], personas[j]);
                 }
             }
         }
