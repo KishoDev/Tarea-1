@@ -15,6 +15,7 @@ struct Persona{
 
 int l;
 
+
 int* comprarTarjeta(string nombre, int dia, int &m){
     //Resumen: Crea las tarjetas de enteros para las personas
     int* arr = new int[m]; 
@@ -64,6 +65,16 @@ Persona* unDia(Persona* personas, int dia){
     int puntos= 0, puntosMax= -1;//Dos variables tipo entero que se encargan de guardar los puntos y el que saco más puntos
 
     int size=l; //*Calcula el largo del arreglo personas.
+    
+    if(dia==1){
+        for(int k=0; k<size; k++){
+            int m = personas[k].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
+            personas[k].tamanio_tarjeta = m;
+            personas[k].tarjeta=comprarTarjeta(personas[k].nombre, dia, m );
+            cout<<personas[k].tarjeta<<endl;
+        }
+    }
+
 
     for(int i = 0; i<size; i++){
         int m = personas[i].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
