@@ -226,11 +226,14 @@ void ListasDeLaSuerte(int l){
         }
 
         j++;
-    
-        for(int r=0 ;r<9; r++){
-            strcpy(&personas[i].fecha[r],&dato[j]);
+
+        char* x;
+        for(int r=0 ;r<12; r++){
+            x = strcpy(&personas[i].fecha[r],&dato[j]);
+            cout<<"strcpy -"<<x<<"-"<<endl;
             j++;
         }
+        cout<<"x "<<x<<endl;
 
         j++;
     
@@ -239,6 +242,7 @@ void ListasDeLaSuerte(int l){
         }else{
             personas[i].quiere_intercambiar=true;
         }
+        cout<<"quiere "<<personas[i].quiere_intercambiar<<endl;
 
         personas[i].nombre=nombre;
         personas[i].tamanio_tarjeta=0;
