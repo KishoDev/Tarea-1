@@ -19,19 +19,16 @@ int l;
 int* comprarTarjeta(string nombre, int dia, int &m){
     //Resumen: Crea las tarjetas de enteros para las personas
     int* arr = new int[m]; 
-    cout<<dia<<endl;
-    if(dia==1){
-        for(int i=0; i<m; i++){
-            arr[i]=0;
-        }
-    }else{
-        for(int j=0; j<m; j++){
-            arr[j] = nombre[j] % dia ;
-        }
+    cout<<nombre<<endl;
 
+    cout<<"[";
+    for(int j=0; j<m; j++){
+        arr[j] = nombre[j] % dia ;
 
-    
-}    return arr;
+        cout<<arr[j]<<",";
+    }
+    cout<<"]\n";
+    return arr;
 };
 
 void intercambiarTarjeta(Persona* p1, Persona* p2){
@@ -44,13 +41,23 @@ void intercambiarTarjeta(Persona* p1, Persona* p2){
 
 int puntaje(Persona* p1){
     int puntaje = 0, sum;
+    int arg[11];
+
+    for (int i=0; i<p1->tamanio_tarjeta; i++){
+        arg[i] = p1->fecha[i];
+        cout<<p1->fecha[i];
+    }
+    cout<<endl;
 
     for (int z=0; z< (p1->tamanio_tarjeta); z++){
-        sum = (p1->tarjeta[z])* p1->fecha[z%10];
+        sum = (p1->tarjeta[z])* arg[z%10];
         puntaje += sum;
     }
+    cout<<"nombre "<<p1->nombre<<endl;
+    cout<<"puntaje "<<puntaje<<endl;
 
-    //delete[] p1 -> tarjeta; 
+    //delete[] p1 -> tarjeta;
+    
     return puntaje;
 };
 
@@ -65,6 +72,7 @@ Persona* unDia(Persona* personas, int dia){
         for(int k=0; k<size; k++){
             int m = personas[k].nombre.length();//Variable entero que guarda la informacion del largo del arreglo de la funcion comprar tarjeta.
             personas[k].tamanio_tarjeta = m;
+            cout<<"tamanio tarjeta "<< m <<endl;
             delete[] personas[k].tarjeta;
             personas[k].tarjeta = comprarTarjeta(personas[k].nombre, dia, m );
         }
@@ -105,6 +113,7 @@ void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador;
     for(int i=1; i<=cant_dias; i++){
         cout<<"Dia "<<i<<endl;
+        cout<<endl;
         ganador = unDia(personas, i);
 
 
@@ -162,6 +171,9 @@ void ListasDeLaSuerte(int l){
         personas[i].nombre=nombre;
         personas[i].tamanio_tarjeta=0;
         personas[i].tarjeta=NULL;
+
+        cout<<"nombre "<<personas[i].nombre<<endl;
+        cout<<"persona quiere intercambiar "<<personas[i].quiere_intercambiar<<endl;
     }
 
 
