@@ -267,7 +267,7 @@ void ListasDeLaSuerte(int l){
 *   -int l; es un entero de variable global que indica la cantidad de datos de personas que hay para entregarselo a la funcion ListasDeLaSuerte
 ******
 * Returns:
-* 	No retorna nada ya que es una funcion main.
+* 	int, retorna 0 si se ejecuta de forma exitosa.
 *****/
 int main(){
     cin>>l;
