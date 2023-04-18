@@ -234,10 +234,10 @@ void ListasDeLaSuerte(int l){
 
         j++;
     
-        if(dato[j] == '1'){
-            personas[i].quiere_intercambiar='1';
+        if(dato[j] == '0'){
+            personas[i].quiere_intercambiar=false;
         }else{
-            personas[i].quiere_intercambiar='0';
+            personas[i].quiere_intercambiar=true;
         }
 
         personas[i].nombre=nombre;
