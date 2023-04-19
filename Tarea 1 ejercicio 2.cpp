@@ -324,7 +324,7 @@ void ListasDeLaSuerte(int l){
         for (int v=0; v < large ;v++){
             personas[i].fecha[v] = f[v];
         };
-
+        personas[i].fecha[10]=' ';
         j++;
     
         if(dato[j] == '0'){
