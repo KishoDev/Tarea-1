@@ -257,7 +257,7 @@ void variosDias(Persona* personas,int cant_dias ){
 
     for(int i=1; i<=cant_dias; i++){
         ganador = unDia(personas, i);
-        puntajeGanador = puntaje(ganador)
+        puntajeGanador = puntaje(ganador);
 
         cout<< ganador->nombre <<' '<< ganador->fecha <<' '<< puntajeGanador <<endl;
 
