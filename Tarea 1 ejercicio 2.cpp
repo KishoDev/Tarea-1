@@ -47,6 +47,34 @@ int* comprarTarjeta(string nombre, int dia, int &m){
         return arr;
 
 };
+
+/*---------------------------------------------------------------------------------------*/
+/*****
+* bool elemento_comun
+******
+* Resumen:
+* 	Comprueba si en las tarjetas (arreglo de enteros) de dos personas, existe un elemento en comun.
+******
+* Input:
+*   -Persona* p1; es un arreglo de struct en donde se guarda los datos de una persona 
+*   -Persona* p2; es un arreglo de struct en donde se guarda los datos de una persona
+*   -int *aux; es un arreglo en donde se almacenara temporalmente la tarjeta de p1 (Ayuda a hacer el intercambio más facil)
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
+
+bool elemento_comun(Persona* p1, Persona* p2){
+    bool se_puede = false;
+    for (int u=0; u< p1->tamanio_tarjeta ; u++){
+        for (int g=0; g< p2->tamanio_tarjeta; g++){
+            if (p1->tarjeta[u] == p2->tarjeta[g]){
+                se_puede = true;
+                return se_puede;
+            }}}
+    return se_puede;
+}
+
 /*---------------------------------------------------------------------------------------*/
 /*****
 * void intercambiarTarjeta
@@ -169,14 +197,20 @@ Persona* unDia(Persona* personas, int dia){
         }
 
         //personas que quieren cambiar
-
+        bool se_puede;
         if(personas[i].quiere_intercambiar==true){
             for(int j = 0; j<size; j++){
-                if(personas[i].nombre != personas[j].nombre && personas[j].quiere_intercambiar == true){
-                    intercambiarTarjeta(&personas[i], &personas[j]);
+                if((i != j) && personas[j].quiere_intercambiar == true){
+                    se_puede = elemento_comun(&personas[i], &personas[j]);
+                    if (se_puede){
+                        intercambiarTarjeta(&personas[i], &personas[j]);
+                        personas[i].quiere_intercambiar = false;
+                        j = size;
+                    }
                 }
             }
         }
+
 
         puntos= puntaje(&personas[i]);
         if(puntos>puntosMax){
@@ -204,11 +238,28 @@ Persona* unDia(Persona* personas, int dia){
 
 void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador;
+    int tam=0, z=0;
+
+    for(int i=0; i<l; i++){
+        if(personas[i].quiere_intercambiar==true) tam++;
+    }
+    int arr[tam];
+
+    for(int i=0; i<l; i++){
+        if(personas[i].quiere_intercambiar==true){
+            arr[z]=i;
+            z++;
+        }
+    }
 
     for(int i=1; i<=cant_dias; i++){
         ganador = unDia(personas, i);
 
         cout<<ganador->nombre<<' '<<ganador->fecha<<' '<<puntaje(ganador)<<endl;
+
+        for(int i=0; i<tam; i++){
+            personas[arr[i]].quiere_intercambiar= true;
+        }
     }
 }
 
