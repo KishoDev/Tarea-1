@@ -277,6 +277,7 @@ int l;  //Una variable global para guardar el numero de personas a ingresar
 /*---------------------------------------------------------------------------------------*/
 
 int* comprarTarjeta(string nombre, int dia, int &m){
+    cout<<"holaa"<<endl;
     int* arr = new int[m]; 
     cout<<"Nombre "<<nombre<<endl;
 
@@ -362,21 +363,36 @@ Persona* unDia(Persona* personas, int dia){
     int puntos= 0, puntosMax= -1;
     int size=l;
     
-/*    if(dia==1){
+    if(dia==1){
         for(int k=0; k<size; k++){
             int m = personas[k].tamanio_tarjeta;
             delete[] personas[k].tarjeta;
             personas[k].tarjeta = comprarTarjeta(personas[k].nombre, dia, m );
         }
-    }*/
-
-    for(int i = 0; i<size; i++){
-        cout<<"si se puede"<<endl;
-        personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, personas[i].tamanio_tarjeta );
+    } 
+    if(dia== 2){
+        for(int i = 0; i<size; i++){
+            //imprimir la tarjeta
+            cout<<"si se puede"<<endl;
+            cout<<personas[i].nombre<<endl;
+            cout<<"antes [";           
+            for(int j=0; j<personas[i].tamanio_tarjeta; j++){
+                cout<<personas[i].tarjeta[j]<<",";
+            } cout<<"]\n"<<endl;
+            //fin
+            int m = personas[i].tamanio_tarjeta;
+            delete[] personas[i].tarjeta;
+            //imprimir la tarjeta
+            cout<<"despues [";
+            for(int j=0; j<personas[i].tamanio_tarjeta; j++){
+                cout<<personas[i].tarjeta[j]<<",";
+            } cout<<"]\n"<<endl;
+            //fin
+            personas[i].tarjeta = comprarTarjeta(personas[i].nombre, dia, m);
+        }
     }
 
     for(int i=0; i<size; i++){
-        cout<<personas[i].nombre<<" quiere cambiar "<<personas[i].quiere_intercambiar<<endl;
         bool se_puede;
         if(personas[i].quiere_intercambiar==true){
             for(int j = 0; j<size; j++){
@@ -385,7 +401,6 @@ Persona* unDia(Persona* personas, int dia){
                     if (se_puede){
                         intercambiarTarjeta(&personas[i], &personas[j]);
                         personas[i].quiere_intercambiar = false;
-                        cout<<"quiere cambiar2 "<<personas[i].quiere_intercambiar<<endl;
                         j = size;
                     }
                 }
@@ -413,6 +428,7 @@ void variosDias(Persona* personas,int cant_dias ){
         if(personas[i].quiere_intercambiar==true) tam++;
     }
     int arr[tam];
+    
     for(int i=0; i<l; i++){
         if(personas[i].quiere_intercambiar==true){
             arr[z]=i;
@@ -423,7 +439,7 @@ void variosDias(Persona* personas,int cant_dias ){
 
 
     for(int i=1; i<=cant_dias; i++){
-        cout<<"otra iteración"<<endl;
+        cout<<"otra iteracion"<<endl;
         ganador = unDia(personas, i);
         cout<<"ganador "<<ganador->nombre<<endl;
 
@@ -432,8 +448,6 @@ void variosDias(Persona* personas,int cant_dias ){
         for(int i=0; i<tam; i++){
             personas[arr[i]].quiere_intercambiar= true;
         }
-
-        delete[] (personas[i].tarjeta);
     }
 }
 
