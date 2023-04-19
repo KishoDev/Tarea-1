@@ -40,7 +40,7 @@ int* comprarTarjeta(string nombre, int dia, int &m){
     cout<<"tamanio "<<m<< endl ;
     cout<<"[";
     for(int j=0; j<m; j++){           
-        arr[j] = nombre[j] % dia ;
+        arr[j] = (nombre[j] % dia) ;
         cout<<arr[j]<<",";
         }
     cout<<"]\n"<<endl;
@@ -176,8 +176,8 @@ Persona* unDia(Persona* personas, int dia){
     cout<<"nfvnfvnfvnj"<<endl;
     Persona *ganadorDia= &personas[0];
     int puntos= 0, puntosMax= -1;
-    int size=l; 
-    
+    int size=l;
+
     if(dia==1){
         for(int k=0; k<size; k++){
             int m = personas[k].nombre.length();
@@ -186,15 +186,9 @@ Persona* unDia(Persona* personas, int dia){
             personas[k].tarjeta = comprarTarjeta(personas[k].nombre, dia, m );
         }
     }
-
-
     for(int i = 0; i<size; i++){
-        if(i!=0){
-            int m = personas[i].nombre.length();
-            personas[i].tamanio_tarjeta = m;
-            delete[] personas[i].tarjeta;
-            personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, m );
-        }
+        delete[] personas[i].tarjeta;
+        personas[i].tarjeta=comprarTarjeta(personas[i].nombre, dia, personas[i].tamanio_tarjeta );
 
         //personas que quieren cambiar
         bool se_puede;
@@ -218,6 +212,7 @@ Persona* unDia(Persona* personas, int dia){
             ganadorDia= &personas[i];
         }
     }
+
     return ganadorDia;
 }
 /*---------------------------------------------------------------------------------------*/
@@ -332,8 +327,9 @@ void ListasDeLaSuerte(int l){
 
         personas[i].nombre=nombre;
 
-        personas[i].tamanio_tarjeta=0;
+        personas[i].tamanio_tarjeta=nombre.length();
         personas[i].tarjeta=NULL;
+        cout<<personas[i].tamanio_tarjeta<<endl;
     }
 
     variosDias(personas, cant_dias);
