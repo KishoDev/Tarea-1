@@ -181,7 +181,6 @@ Persona* unDia(Persona* personas, int dia){
 void variosDias(Persona* personas,int cant_dias ){
     Persona *ganador;
     for (int i = 1; i <= cant_dias; i++){
-        cout << "Dia: " << i << endl;
 
         ganador = unDia(personas, i);
 
@@ -207,7 +206,7 @@ void variosDias(Persona* personas,int cant_dias ){
 
 void ListasDeLaSuerte(){
     Persona p, *personas;
-    int cant_dias = 2;
+    int cant_dias;
 
     string *listaPersonas = new string[numPersonas];
     
@@ -217,32 +216,26 @@ void ListasDeLaSuerte(){
         listaPersonas[i] += p.nombre;
     }
 
+    cin >> cant_dias;
     personas = new Persona[numPersonas];
     for(int i = 0; i < numPersonas; i++){
         string dato = listaPersonas[i];
-        string nombrePersona, fechaPersona;
-        int j = 0;    
-        
-        while(dato[j] != ' '){
-            nombrePersona += dato[j];
-            j++;
-        }
+        int temp;
 
-        j++;               
-    
-        fechaPersona = dato.substr(j, j + 11);
+        temp = dato.find(' ');
 
-        j += 11;
-        
-        if(dato[j] == '0'){
+        personas[i].nombre = dato.substr(0, temp);
+
+        dato = dato.substr(temp + 1, dato.length());
+
+        strcpy(personas[i].fecha, dato.substr(0, 10).c_str());
+
+        if (dato[11] == '0'){
             personas[i].quiere_intercambiar = false;
-        }else{
-            personas[i].quiere_intercambiar = true;
+        } else {
+           personas[i].quiere_intercambiar = true;
         }
 
-
-        personas[i].nombre = nombrePersona;
-        strcpy(personas[i].fecha, fechaPersona.c_str());
         personas[i].tamanio_tarjeta = sizeof(personas[i].nombre);
     }
 
