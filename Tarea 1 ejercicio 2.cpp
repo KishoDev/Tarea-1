@@ -114,11 +114,13 @@ void intercambiarTarjeta(Persona* p1, Persona* p2){
 
 int puntaje(Persona* p1){
     int puntaje = 0, sum;
-    
+    cout<<endl<<p1->nombre<<" y fecha "<<p1->fecha<<endl;
     for (int z=0; z< (p1->tamanio_tarjeta); z++){
         sum = (p1->tarjeta[z])* p1->fecha[z%10];
         puntaje += sum;
     }
+
+    cout<<"El puntaje de "<<p1->nombre<<" es "<<puntaje<<endl;
 
     return puntaje;
 };
@@ -142,6 +144,8 @@ int puntaje(Persona* p1){
 * 	Un arreglo de struct con los datos del ganador del dia
 *****/
 Persona* unDia(Persona* personas, int dia){ 
+
+    cout<<"Dia "<<dia<<endl;
     Persona *ganadorDia= &personas[0];
     int puntos= 0, puntosMax= -1;
     int size=l; 
@@ -165,10 +169,10 @@ Persona* unDia(Persona* personas, int dia){
         }
 
         //personas que quieren cambiar
+
         if(personas[i].quiere_intercambiar==true){
-            for(int j=i; j<size; j++){
-                j++;
-                if(personas[j].quiere_intercambiar==true && j<size){
+            for(int j = 0; j<size; j++){
+                if(personas[i].nombre != personas[j].nombre && personas[j].quiere_intercambiar == true){
                     intercambiarTarjeta(&personas[i], &personas[j]);
                 }
             }
@@ -179,38 +183,6 @@ Persona* unDia(Persona* personas, int dia){
             puntosMax=puntos;
             ganadorDia= &personas[i];
         }
-    //propuesta personas que quieren cambiar
-    /*for(int i = 0; i<size; i++){
-        int h = 1;
-        bool se_puede = false;
-        while(personas[i].quiere_intercambiar==true && h<=size){
-            if(personas[h].quiere_intercambiar==true && (h!=i)){
-                for (int u=0; u<personas[i].tamanio_tarjeta ; u++){
-                    for (int g=0; g<personas[h].tamanio_tarjeta; g++){
-                        if (personas[i].tarjeta[u] == personas[h].tarjeta[g]){
-                            se_puede = true;
-                            break;
-                        }
-                    }
-                }
-            
-            if (se_puede){
-                cout<<"p1 "<<personas[i].nombre<<" y p2 "<<personas[h].nombre<<endl;
-                intercambiarTarjeta(&personas[i], &personas[h]);
-                personas[i].quiere_intercambiar = false;
-            };
-            };
-            h++;
-        };
-
-        puntos= puntaje(&personas[i]);
-        if(puntos>puntosMax){
-            puntosMax=puntos;
-            ganadorDia= &personas[i];
-        }
-
-    }*/
-
     }
     return ganadorDia;
 }
@@ -293,7 +265,8 @@ void ListasDeLaSuerte(int l){
             j++;
         };
         
-        for (int v=0; v < f.length() ;v++){
+        int large = f.length();
+        for (int v=0; v < large ;v++){
             personas[i].fecha[v] = f[v];
         };
 
@@ -306,6 +279,7 @@ void ListasDeLaSuerte(int l){
         }
 
         personas[i].nombre=nombre;
+
         personas[i].tamanio_tarjeta=0;
         personas[i].tarjeta=NULL;
     }
