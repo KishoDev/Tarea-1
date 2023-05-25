@@ -4,9 +4,6 @@ Nombre: Giselle Goméz Rol: 202273591-0 Paralelo: 200
 
 Lo que programo cada uno:
   Ejercicio 1:
-    Vicente programo todo.
   
   Ejercicio 2:
-    Alvaro programo las funciones Lista de la suerte, variosDias y unDia.
-    Giselle programo las funciones comprarTarjeta, intercambiarTarjeta, elemento_comun y puntaje.
-    Vicente trabajó de fontanero (revisando las fugas de memoria).
+
