@@ -1,3 +1,2 @@
-# Tarea-1
+# Tarea-2
 
-Esta tarea se compiló con g++.
