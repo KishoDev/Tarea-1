@@ -63,7 +63,7 @@ void tABB::insert(tipoElem item){
 	}
 
 	nElems++;
-};
+}
 
 void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(item > nodo->info){
@@ -89,51 +89,42 @@ void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 			insertHelp(nodo->izq, item);
 		}
 	}
-};
+}
 
 bool tABB::find(tipoElem item){
+	if(raiz== nullptr)	return false;
 	return findHelp(raiz, item);
-};
+}
 
 bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info == item) return true;
-
 
 	if(item > nodo->info && nodo->der != nullptr) findHelp(nodo->der, item);
 
 	if(item < nodo->info && nodo->izq != nullptr) findHelp(nodo->izq, item);
 
 	return false;
-};
+}
 
 int tABB::lower_bound(tipoElem item){
+	if(raiz== nullptr)	return -1;
 	return lower_boundHelp(raiz, item);
-};
+}
 
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
 	if(nodo->izq != nullptr) lower_boundHelp(nodo->izq, item);
 
 	return -1;
-};
+}
 
 //------------testeo--------------------------------
 /*
 int main(){
 	tABB arbol;
-	arbol.insert(28);
-	arbol.insert(16);
-	arbol.insert(30);
-	arbol.insert(5);
-	arbol.insert(19);
-	arbol.insert(29);
-	arbol.insert(32);
-	arbol.insert(12);
-	arbol.insert(17);
-	arbol.insert(21);
-
-	arbol.find(17);
-	arbol.lower_bound(5);
+	
+	cout<<arbol.find(17)<<endl;
+	cout<<arbol.lower_bound(5)<<endl;
 
 	arbol.clear();
 	//g++ -g 'TDA de ABB.cpp' -o alo
