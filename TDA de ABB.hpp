@@ -107,7 +107,7 @@ bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 }
 
 int tABB::lower_bound(tipoElem item){
-	if(raiz== nullptr)	return -1;
+	if(raiz== nullptr)	return 0;
 	return lower_boundHelp(raiz, item);
 }
 
@@ -115,7 +115,7 @@ int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
 	if(nodo->izq != nullptr) lower_boundHelp(nodo->izq, item);
 
-	return -1;
+	return 0;
 }
 
 //------------testeo--------------------------------
