@@ -1,0 +1,32 @@
+/*
+Entrada
+La entrada se hará a través de la entrada estándar. El principio de cada línea contendrá un string
+que podrá ser ENCENDER, CUANTOS_ENCENDER o PARAR_PROGRAMA. Si el string corresponde a ENCENDER o
+CUANTOS_ENCENDER le acompañará un entero i separado por un espacio.
+Un ejemplo de la entrada es el siguiente:
+
+CUANTOS_ENCENDER 9
+ENCENDER 1
+CUANTOS_ENCENDER 9
+ENCENDER 8
+CUANTOS_ENCENDER 9
+ENCENDER 4
+ENCENDER 10
+CUANTOS_ENCENDER 9
+ENCENDER 2
+ENCENDER 4
+CUANTOS_ENCENDER 2
+CUANTOS_ENCENDER 4
+PARAR_PROGRAMA
+
+3.2.2. Salida
+La salida debe realizarse también por la salida estándar. La salida correspondiente al ejemplo planteado
+anteriormente es el siguiente:
+10
+8
+1
+1
+0
+0
+5
+*/
