@@ -12,18 +12,28 @@ class AvenidaLuces{
 		int PostesEncendidos;
 		tABB postes;	//En el ABB vamos a guardar todos los postes que están encendidos
 	public:
+		//Constructor
 		AvenidaLuces(){
-			int PostesEncendidos = 0;
+			PostesEncendidos = 0;
 		}
+		//Destructor
 		~AvenidaLuces(){
-			int PostesEncendidos = NULL;
 		}
 
 		void Encender(int i);
 		void CuantosEncender(int i);
 		void PararPrograma();
-
+		int getPostesEncendidos();
+		void mostrarArbolp();
 };
+
+void AvenidaLuces::mostrarArbolp(){
+	postes.mostrarArbol();
+}
+
+int AvenidaLuces::getPostesEncendidos(){
+	return PostesEncendidos;
+}
 
 void AvenidaLuces::Encender(int i){
 	//Enciende el poste numero i, si el poste ya esta encendido entonces no ocurre nada
@@ -31,26 +41,38 @@ void AvenidaLuces::Encender(int i){
 		postes.insert(i);
 		PostesEncendidos++;
 	}
-
 }
-
-/*CUANTOS_ENCENDER i: se debe entregar cuántos postes están apagados entre la posición i y la posición
-del poste encendido más cercano en una posición menor o igual a i. Si no existe tal poste, debe
-responder la cantidad de postes apagados entre las posiciones 0 e i. Muestra por pantalla el resultado
-seguido de un salto de línea.*/
 
 void AvenidaLuces::CuantosEncender(int i){
 	int postesApagados = 0;
-	int h = i;
-	while (h >=0){
-		cout<<"h "<<h<<endl;
-		if (postes.find(h) == false){
+	int x;
+
+	cout<<"funcion lower: "<<postes.lower_bound(i)<<endl;
+	x = postes.lower_bound(i);
+
+	/*
+		int h = i;
+		while (h <= i && h > 0){
+		cout<<"h "<<h<<"   find "<<postes.find(h)<<endl;
+		h--;
+	}*/
+
+	//Cuando no hay poste encendido
+	if (x == 0 ){
+		while (i >= x){
+		postesApagados += 1;
+		i--;
+		}
+
+	} else {
+		//Cuando existe un poste encendido cercano
+		while (i > x){
 			postesApagados += 1;
-			h--;
-			cout<<"postes apagados"<<postesApagados<<endl;
+			i--;
 		}
 	}
-	cout<<postesApagados<<endl;
+
+	cout<<"Postes Apagados: "<<postesApagados<<endl;
 }
 
 void AvenidaLuces::PararPrograma(){
@@ -61,8 +83,9 @@ void AvenidaLuces::PararPrograma(){
 void LucesporArreglar(){
 	bool flag=true;
 
+	AvenidaLuces principal;
+
 	while(flag){
-		AvenidaLuces principal;
 		string entrada, orden;
 		int espacio, pos;
 
@@ -80,12 +103,17 @@ void LucesporArreglar(){
 		
 		if(orden == "ENCENDER"){
 			principal.Encender(pos);
+			//cout<<"Postes encendidos "<<principal.getPostesEncendidos()<<endl;
 		}
 		
 		if(orden == "CUANTOS_ENCENDER"){
 			principal.CuantosEncender(pos);
 		}
+
+		//cout<<"Arbol"<<endl;
+		//principal.mostrarArbolp();
 	}
+	
 }
 
 
