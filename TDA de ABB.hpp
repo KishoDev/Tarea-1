@@ -1,6 +1,7 @@
 //TDA de ABB
 
 #include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -20,6 +21,8 @@ class tABB{
 		void insertHelp(tNodoArbolBin *nodo, tipoElem item);
 		bool findHelp(tNodoArbolBin *nodo, tipoElem item);
 		int lower_boundHelp(tNodoArbolBin *nodo, tipoElem item);
+		void mostrarArbolHelp(tNodoArbolBin *nodo, int cont);
+
 	public:
 		//Construtor y destructor
 		tABB(){
@@ -34,6 +37,8 @@ class tABB{
 		bool find(tipoElem item);
 		int lower_bound(tipoElem item);
 		void clear();
+		void mostrarArbol();
+		
 };
 //-----------------------------------------------------------------------
 void tABB::clear(){
@@ -117,6 +122,25 @@ int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 
 	return 0;
 }
+
+//función para mostrar arbol completo (de costado)
+void tABB::mostrarArbol(){
+	mostrarArbolHelp(raiz, 0);
+}
+
+void tABB::mostrarArbolHelp(tNodoArbolBin *nodo, int cont){
+	if (nodo == NULL){
+		return;
+	}else{
+		mostrarArbolHelp(nodo->der, cont+1);
+		for (int i=0; i<cont; i++){
+			cout<<"   ";
+		}
+		cout<<nodo->info<<endl;
+		mostrarArbolHelp(nodo->izq, cont+1);
+	}
+}
+
 
 //------------testeo--------------------------------
 /*
