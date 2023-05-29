@@ -132,13 +132,21 @@ int tABB::lower_bound(tipoElem item){
 	return lower_boundHelp(raiz, item);
 }
 
+/*
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
 	if(nodo->izq != nullptr) lower_boundHelp(nodo->izq, item);
 
 	return 0;
-}
+}*/
 
+int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
+	if(nodo->izq != nullptr){
+		return lower_boundHelp(nodo->izq, item);
+	}else{
+		return nodo->info;
+	}
+}
 
 
 //función para mostrar arbol completo (de costado)

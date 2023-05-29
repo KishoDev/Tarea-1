@@ -81,19 +81,16 @@ void AvenidaLuces::Encender(int i){
 void AvenidaLuces::CuantosEncender(int i){
 	int postesApagados = 0;
 	int x;
-
 	x = postes.lower_bound(i);
 
 	if (x == 0 ){     //Cuando no hay poste encendido
-
 		while (i >= x){
 		postesApagados += 1;
 		i--;
 		}
 
 	} else {     //Cuando existe un poste encendido cercano
-
-		while (i > x && postes.find(i) == false){
+		while (postes.find(i) == false){
 			postesApagados += 1;
 			i--;
 		}
