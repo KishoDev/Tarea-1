@@ -47,15 +47,7 @@ void AvenidaLuces::CuantosEncender(int i){
 	int postesApagados = 0;
 	int x;
 
-	cout<<"funcion lower: "<<postes.lower_bound(i)<<endl;
 	x = postes.lower_bound(i);
-
-	/*
-		int h = i;
-		while (h <= i && h > 0){
-		cout<<"h "<<h<<"   find "<<postes.find(h)<<endl;
-		h--;
-	}*/
 
 	//Cuando no hay poste encendido
 	if (x == 0 ){
@@ -66,13 +58,13 @@ void AvenidaLuces::CuantosEncender(int i){
 
 	} else {
 		//Cuando existe un poste encendido cercano
-		while (i > x){
+		while (i > x && postes.find(i) == false){
 			postesApagados += 1;
 			i--;
 		}
 	}
 
-	cout<<"Postes Apagados: "<<postesApagados<<endl;
+	cout<<postesApagados<<endl;
 }
 
 void AvenidaLuces::PararPrograma(){

@@ -97,7 +97,7 @@ void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 	}
 }
 
-bool tABB::find(tipoElem item){
+/*bool tABB::find(tipoElem item){
 	if(raiz== nullptr)	return false;
 	return findHelp(raiz, item);
 }
@@ -110,6 +110,21 @@ bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(item < nodo->info && nodo->izq != nullptr) findHelp(nodo->izq, item);
 
 	return false;
+}*/
+bool tABB::find(tipoElem item){
+	return findHelp(raiz, item);
+}
+
+bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
+	if (nodo == NULL){ 
+		return false;
+	} else if (nodo->info == item){
+		return true;
+	} else if (item < nodo->info){
+		return findHelp(nodo->izq, item);
+	} else {
+		return findHelp(nodo->der, item);
+	}
 }
 
 int tABB::lower_bound(tipoElem item){
