@@ -27,6 +27,7 @@ class AvenidaLuces{
 		void mostrarArbolp();
 };
 
+
 void AvenidaLuces::mostrarArbolp(){
 	postes.mostrarArbol();
 }
@@ -34,6 +35,21 @@ void AvenidaLuces::mostrarArbolp(){
 int AvenidaLuces::getPostesEncendidos(){
 	return PostesEncendidos;
 }
+
+
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 
 void AvenidaLuces::Encender(int i){
 	//Enciende el poste numero i, si el poste ya esta encendido entonces no ocurre nada
@@ -43,21 +59,40 @@ void AvenidaLuces::Encender(int i){
 	}
 }
 
+
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::CuantosEncender
+******
+* Resumen:
+* 	Entrega la cantidad de postes que están apagados entre la posición i y la posición del 
+*   poste encendido más cercano en una posición menor o igual a i. Si no existe tal poste,
+*   entrega la cantidad de postes apagados entre las posiciones 0 e i. Y luego muestra por 
+*   pantalla el resultado.
+******
+* Input:
+*   -int i; es un entero que representa la posición del poste a evaluar.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
+
+
 void AvenidaLuces::CuantosEncender(int i){
 	int postesApagados = 0;
 	int x;
 
 	x = postes.lower_bound(i);
 
-	//Cuando no hay poste encendido
-	if (x == 0 ){
+	if (x == 0 ){     //Cuando no hay poste encendido
+
 		while (i >= x){
 		postesApagados += 1;
 		i--;
 		}
 
-	} else {
-		//Cuando existe un poste encendido cercano
+	} else {     //Cuando existe un poste encendido cercano
+
 		while (i > x && postes.find(i) == false){
 			postesApagados += 1;
 			i--;
@@ -67,10 +102,40 @@ void AvenidaLuces::CuantosEncender(int i){
 	cout<<postesApagados<<endl;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::PararPrograma
+******
+* Resumen:
+* 	Entrega la cantidad total de postes encendidos y muestra el resultado por pantalla.
+******
+* Input:
+*   No recibe ningún parámetro.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
+
 void AvenidaLuces::PararPrograma(){
 	cout<<PostesEncendidos<<endl;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void LucesporArreglar
+******
+* Resumen:
+* 	Inicializa la clase AvenidaLuces, si se ingrese el string "PARAR_PROGRAMA" ejecuta la
+*   función PararPrograma y termina, si no, se recibe otro string. Si se ingresa "ENCENDER", 
+*   se ejecuta la función Encender, y si se ingresa "CUANTOS_ENCENDER", se ejecuta la 
+*   función CuantosEncender.
+******
+* Input:
+*   No recibe ningun parámetro.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 
 void LucesporArreglar(){
 	bool flag=true;
