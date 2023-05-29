@@ -10,7 +10,7 @@ int main(){
     int dato, opcion;
 
     do{
-        cout<<"t. :MENU:."<<endl;
+        cout<<"   - MENU -   "<<endl;
         cout<<"1. Insertar (insert)"<<endl;
         cout<<"2. Encontrar (find)"<<endl;
         cout<<"3. Busca el 1er valor que sea <= x (lower_bound)"<<endl;
