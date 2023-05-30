@@ -2,7 +2,7 @@
 ---
 
 Recomendaciones a la hora de compilar y probar:
-  ES IMPORTANTE tener "tarea2_2.0.cpp" y "lista2.hpp" dentro de la misma carpeta a la hora de compilar y ejecutar el programa. 
+  ES IMPORTANTE tener "problema1.cpp" y "lista.hpp" dentro de la misma carpeta a la hora de compilar y ejecutar el programa. 
   Tal programa no funcionará sin el header recién indicado.
 
 Formas de compilación utilizadas:
