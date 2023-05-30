@@ -10,13 +10,11 @@ using namespace std;
 class AvenidaLuces{
 	private:
 		int PostesEncendidos;
-		tABB postes;	//En el ABB vamos a guardar todos los postes que están encendidos
+		tABB postes;
 	public:
-		//Constructor
 		AvenidaLuces(){
 			PostesEncendidos = 0;
 		}
-		//Destructor
 		~AvenidaLuces(){
 		}
 
@@ -52,7 +50,6 @@ int AvenidaLuces::getPostesEncendidos(){
 *****/
 
 void AvenidaLuces::Encender(int i){
-	//Enciende el poste numero i, si el poste ya esta encendido entonces no ocurre nada
 	if(postes.find(i) == false){
 		postes.insert(i);
 		PostesEncendidos++;
@@ -83,13 +80,13 @@ int AvenidaLuces::CuantosEncender(int i){
 	int x;
 	x = postes.lower_bound(i);
 
-	if (x == 0 ){     //Cuando no hay poste encendido
+	if (x == 0 ){
 		while (i >= x){
 		postesApagados += 1;
 		i--;
 		}
 
-	} else {     //Cuando existe un poste encendido cercano
+	} else { 
 		while (postes.find(i) == false){
 			postesApagados += 1;
 			i--;
@@ -154,20 +151,16 @@ void LucesporArreglar(){
 			espacio= entrada.find(' ');
 			orden= entrada.substr(0,espacio);
 			pos= stoi(entrada.substr(espacio+1, entrada.length()));
-			//cout<<espacio<<'\n'<<orden<<'\n'<<pos<<endl;	
 		}
 		
 		if(orden == "ENCENDER"){
 			principal.Encender(pos);
-			//cout<<"Postes encendidos "<<principal.getPostesEncendidos()<<endl;
 		}
 		
 		if(orden == "CUANTOS_ENCENDER"){
 			principal.CuantosEncender(pos);
 		}
 
-		//cout<<"Arbol"<<endl;
-		//principal.mostrarArbolp();
 	}
 	
 }
