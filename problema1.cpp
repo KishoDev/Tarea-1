@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "lista2.hpp"
+#include "lista.hpp"
 
 using namespace std;
 
