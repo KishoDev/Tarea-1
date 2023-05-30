@@ -115,7 +115,7 @@ int tABB::lower_bound(tipoElem item){
 
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
-	if(nodo->izq != NULL) lower_boundHelp(nodo->izq, item);
+	if(nodo->izq != NULL) return lower_boundHelp(nodo->izq, item);
 
 	return 0;
 }
