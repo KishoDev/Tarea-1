@@ -21,7 +21,7 @@ class AvenidaLuces{
 		}
 
 		void Encender(int i);
-		void CuantosEncender(int i);
+		int CuantosEncender(int i);
 		void PararPrograma();
 		int getPostesEncendidos();
 		void mostrarArbolp();
@@ -62,7 +62,7 @@ void AvenidaLuces::Encender(int i){
 
 /*---------------------------------------------------------------------------------------*/
 /*****
-* void AvenidaLuces::CuantosEncender
+* int AvenidaLuces::CuantosEncender
 ******
 * Resumen:
 * 	Entrega la cantidad de postes que están apagados entre la posición i y la posición del 
@@ -74,11 +74,11 @@ void AvenidaLuces::Encender(int i){
 *   -int i; es un entero que representa la posición del poste a evaluar.
 ******
 * Returns:
-* 	No retorna nada ya que es una funcion void
+* 	Retorna la cantidad de postes apagados.
 *****/
 
 
-void AvenidaLuces::CuantosEncender(int i){
+int AvenidaLuces::CuantosEncender(int i){
 	int postesApagados = 0;
 	int x;
 	x = postes.lower_bound(i);
@@ -97,6 +97,8 @@ void AvenidaLuces::CuantosEncender(int i){
 	}
 
 	cout<<postesApagados<<endl;
+
+	return postesApagados;
 }
 
 /*---------------------------------------------------------------------------------------*/
