@@ -38,7 +38,20 @@ class tABB{
 		void clear();
 		void mostrarArbol();
 };
-//-----------------------------------------------------------------------
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void tABB::clear
+******
+* Resumen:
+* 	Se encarga de limpiar el arbol generado por el TDA, para eso llama una función auxiliar y reinicia los valores de la raiz y los nElemns
+******
+* Input:
+*   Ninguno ya que usa las funciones del TDA ABB
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
+
 void tABB::clear(){
 
 	clearHelp(raiz);
@@ -46,6 +59,19 @@ void tABB::clear(){
 	nElems=0;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void tABB::clearHelp
+******
+* Resumen:
+* 	Ayuda a limpiar los hijos del arbol que se formo y elimina el nodo cuando ya no tiene elementos
+******
+* Input:
+*   -tNodoArbolBin nodo; es un nodo cualquiera del árbol y que puede o no tener elementos en la izquierda o derecha
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 void tABB::clearHelp(tNodoArbolBin* nodo) {
 	if (nodo != NULL) {
         clearHelp(nodo->izq);
@@ -54,6 +80,20 @@ void tABB::clearHelp(tNodoArbolBin* nodo) {
     }
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void tABB::insert
+******
+* Resumen:
+* 	Inserta un elemento en el nodo, puede ser en la izquierda o en la derecha. Pero antes se asegura de exista una raiz en el arbol para crear un nodo
+*	y después llama una función que lo ayuda
+******
+* Input:
+*   -tipoElem item; es un elemento que representa un numero
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 void tABB::insert(tipoElem item){
 	if(raiz==NULL){
 		raiz = new tNodoArbolBin;
@@ -68,6 +108,19 @@ void tABB::insert(tipoElem item){
 	nElems++;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void tABB::insertHelp
+******
+* Resumen:
+* 	Ayuda a
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(item > nodo->info){
 		if(nodo->der == NULL){
@@ -92,6 +145,19 @@ void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 	}
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 bool tABB::find(tipoElem item){
 	return findHelp(raiz, item);
 }
@@ -108,6 +174,19 @@ bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 	}
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 int tABB::lower_bound(tipoElem item){
 	if(raiz== NULL)	return 0;
 	return lower_boundHelp(raiz, item);
@@ -120,10 +199,36 @@ int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	return 0;
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 void tABB::mostrarArbol(){
 	mostrarArbolHelp(raiz, 0);
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 void tABB::mostrarArbolHelp(tNodoArbolBin *nodo, int cont){
 	if (nodo == NULL){
 		return;
