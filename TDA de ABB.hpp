@@ -36,19 +36,20 @@ class tABB{
 		int lower_bound(tipoElem item);
 		void clear();
 };
-/*---------------------------------------------------------------------------------------*/
-/*****
+/---------------------------------------------------------------------------------------/
+/***
 * void tABB::clear
-******
+**
 * Resumen:
-* 	Se encarga de limpiar el arbol generado por el TDA, para eso llama una función auxiliar y reinicia los valores de la raiz y los nElemns
-******
+*   Se encarga de limpiar el árbol, llama a la función clearHelp y reinicializa los atributos
+*   raiz y nElems a NULL y 0 respectivamente.
+**
 * Input:
-*   Ninguno ya que usa las funciones del TDA ABB
-******
+*   No recibe nada.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+*   No retorna nada ya que es una funcion void.
+***/
 
 void tABB::clear(){
 
@@ -57,19 +58,19 @@ void tABB::clear(){
 	nElems=0;
 }
 
-/*---------------------------------------------------------------------------------------*/
-/*****
+/---------------------------------------------------------------------------------------/
+/***
 * void tABB::clearHelp
-******
+**
 * Resumen:
-* 	Ayuda a limpiar los hijos del arbol que se formo y elimina el nodo cuando ya no tiene elementos
-******
+*   Si el nodo no esta vacío, entonces elimina los hijos del nodo y luego elimina el nodo
+**
 * Input:
-*   -tNodoArbolBin nodo; es un nodo cualquiera del árbol y que puede o no tener elementos en la izquierda o derecha
-******
+*   - tNodoArbolBin* nodo; es un arreglo de struct en el que se almacena el nodo.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+*   No retorna nada ya que es una funcion void.
+***/
 void tABB::clearHelp(tNodoArbolBin* nodo) {
 	if (nodo != NULL) {
         clearHelp(nodo->izq);
@@ -78,20 +79,21 @@ void tABB::clearHelp(tNodoArbolBin* nodo) {
     }
 }
 
-/*---------------------------------------------------------------------------------------*/
-/*****
+//---------------------------------------------------------------------------------------/
+/***
 * void tABB::insert
-******
+**
 * Resumen:
-* 	Inserta un elemento en el nodo, puede ser en la izquierda o en la derecha. Pero antes se asegura de exista una raiz en el arbol para crear un nodo
-*	y después llama una función que lo ayuda
-******
+* 	Si la raiz es NULL crea el nodo y asigna el elemento al nodo->info; si no llama a la 
+*   función insertHelp, con la raiz y el elemento item como parámetros. 
+*   Al final nElems aumenta en uno (se le suma 1 a nElems).
+**
 * Input:
-*   -tipoElem item; es un elemento que representa un numero
-******
+*   - tipoElem item; el elemento que se quiere agregar al ABB.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+* 	No retorna nada ya que es una funcion void.
+***/
 void tABB::insert(tipoElem item){
 	if(raiz==NULL){
 		raiz = new tNodoArbolBin;
@@ -106,19 +108,21 @@ void tABB::insert(tipoElem item){
 	nElems++;
 }
 
-/*---------------------------------------------------------------------------------------*/
-/*****
+//---------------------------------------------------------------------------------------/
+/***
 * void tABB::insertHelp
-******
+**
 * Resumen:
-* 	Ayuda a
-******
+*   Si el elemento es mayor al nodo, crea el nodo->der y asigna el valor, o llama a la 
+*   función insert Help, lo mismo si el elemento es menor, con el nodo->izq.
+**
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
-******
+*   - tNodoArbolBin* nodo; es un arreglo de struct en el que se almacena el nodo.
+*   - tipoElem item; el elemento que se quiere agregar al ABB.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+* 	No retorna nada ya que es una funcion void.
+***/
 void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(item > nodo->info){
 		if(nodo->der == NULL){
@@ -133,46 +137,49 @@ void tABB::insertHelp(tNodoArbolBin *nodo, tipoElem item){
 
 	if(item< nodo->info){
 		if(nodo->izq == NULL){
-            nodo->izq = new tNodoArbolBin;
-            nodo->izq->info = item;
-            nodo->izq->der = NULL;
-            nodo->izq->izq = NULL;
+            		nodo->izq = new tNodoArbolBin;
+            		nodo->izq->info = item;
+            		nodo->izq->der = NULL;
+            		nodo->izq->izq = NULL;
 		}else{
 			insertHelp(nodo->izq, item);
 		}
 	}
 }
-
-/*---------------------------------------------------------------------------------------*/
-/*****
-* void AvenidaLuces::Encender
-******
-* Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
-******
+//---------------------------------------------------------------------------------------/
+/***
+* bool tABB::find
+**
+* Resumen: 
+*   Busca al elemento, llama a la función findHelp.
+**
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
-******
+*   - tipoElem item; el elemento que se quiere encontrar.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+*   Retorna un booleano, true si se encontró el elemento y false si no lo hizo.
+***/
+
 bool tABB::find(tipoElem item){
 	return findHelp(raiz, item);
 }
 
-/*---------------------------------------------------------------------------------------*/
-/*****
-* void AvenidaLuces::Encender
-******
-* Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
-******
+/---------------------------------------------------------------------------------------/
+/***
+* bool tABB::findHelp
+**
+* Resumen: 
+*   Verifica si el nodo es NULL o si el elemento se encontró (es igual al nodo) y si el 
+*   nodo es mayor o menor al elemento se llama a la función findHelp. 
+**
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
-******
+*   - tNodoArbolBin* nodo; es un arreglo de struct en el que se almacena el nodo.
+*   - tipoElem item; el elemento que se quiere encontrar.
+**
 * Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
+*   Retorna un booleano, true si se encontro, false si no lo encontró.
+***/
+	
 bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 	if (nodo == NULL){ 
 		return false;
@@ -214,12 +221,13 @@ int tABB::lower_bound(tipoElem item){
 *	izquierdo y si no se encuentra un elemetno menor o igual, entonces retornara 0
 ******
 * Input:
-*   -tNodoArbolBin *nodo; Es el puntero en donde se almacena el nodo
+*   -tNodoArbolBin *nodo; es un arreglo de struct en el que se almacena el nodo
 *   -tipoElem item; Es el elemento en el que se debe comparar el valor
 ******
 * Returns:
 * 	retorna 0, esto pasará solo si no se encuentra el elemento en el árbol
 *****/
+
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
 	if(nodo->izq != NULL) return lower_boundHelp(nodo->izq, item);
