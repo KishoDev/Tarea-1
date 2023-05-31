@@ -21,7 +21,6 @@ class tABB{
 		void insertHelp(tNodoArbolBin *nodo, tipoElem item);
 		bool findHelp(tNodoArbolBin *nodo, tipoElem item);
 		int lower_boundHelp(tNodoArbolBin *nodo, tipoElem item);
-		void mostrarArbolHelp(tNodoArbolBin *nodo, int cont);
 
 	public:
 		tABB(){
@@ -36,7 +35,6 @@ class tABB{
 		bool find(tipoElem item);
 		int lower_bound(tipoElem item);
 		void clear();
-		void mostrarArbol();
 };
 /*---------------------------------------------------------------------------------------*/
 /*****
