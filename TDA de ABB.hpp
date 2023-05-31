@@ -190,52 +190,22 @@ int tABB::lower_bound(tipoElem item){
 	return lower_boundHelp(raiz, item);
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
 	if(nodo->izq != NULL) return lower_boundHelp(nodo->izq, item);
 
 	return 0;
-}
-
-/*---------------------------------------------------------------------------------------*/
-/*****
-* void AvenidaLuces::Encender
-******
-* Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
-******
-* Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
-******
-* Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
-void tABB::mostrarArbol(){
-	mostrarArbolHelp(raiz, 0);
-}
-
-/*---------------------------------------------------------------------------------------*/
-/*****
-* void AvenidaLuces::Encender
-******
-* Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
-******
-* Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
-******
-* Returns:
-* 	No retorna nada ya que es una funcion void
-*****/
-void tABB::mostrarArbolHelp(tNodoArbolBin *nodo, int cont){
-	if (nodo == NULL){
-		return;
-	}else{
-		mostrarArbolHelp(nodo->der, cont+1);
-		for (int i=0; i<cont; i++){
-			cout<<"   ";
-		}
-		cout<<nodo->info<<endl;
-		mostrarArbolHelp(nodo->izq, cont+1);
-	}
 }
