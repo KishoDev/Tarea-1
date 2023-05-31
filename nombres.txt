@@ -4,6 +4,9 @@ Nombre: Giselle Goméz Rol: 202273591-0 Paralelo: 200
 
 Lo que programo cada uno:
   Ejercicio 1:
-  
+    Vicente Galaz programo todo y comento todas las funciones
+    
   Ejercicio 2:
-
+    Alvaro Aceituno programo todo el TDA del ABB y las funciones Encender, PararPrograma, LucesporArreglar y la clase AvenidaLuces
+    Giselle Goméz programo la función CuantosEncender, arreglo la función de find y findHelp y se aseguro que funcionará bien 
+    el TDA del ABB en el programa y comento el programa y el TDA del ABB
