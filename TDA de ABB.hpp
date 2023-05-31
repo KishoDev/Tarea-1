@@ -160,6 +160,19 @@ bool tABB::find(tipoElem item){
 	return findHelp(raiz, item);
 }
 
+/*---------------------------------------------------------------------------------------*/
+/*****
+* void AvenidaLuces::Encender
+******
+* Resumen:
+* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+******
+* Input:
+*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
+*****/
 bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 	if (nodo == NULL){ 
 		return false;
@@ -174,16 +187,17 @@ bool tABB::findHelp(tNodoArbolBin *nodo, tipoElem item){
 
 /*---------------------------------------------------------------------------------------*/
 /*****
-* void AvenidaLuces::Encender
+* void tABB::lower_bound
 ******
 * Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+* 	busca el primer valor que sea menor o igual a item, antes se asegura de que la raiz exista antes
+*	de llamar una función auxiliar.
 ******
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+*   -tipoElem item; es un elemento que se utilizara para buscar si existe un elemento menor o igual 
 ******
 * Returns:
-* 	No retorna nada ya que es una funcion void
+* 	retorna el elemento que es menor o igual al tipoElem item
 *****/
 int tABB::lower_bound(tipoElem item){
 	if(raiz== NULL)	return 0;
@@ -192,16 +206,19 @@ int tABB::lower_bound(tipoElem item){
 
 /*---------------------------------------------------------------------------------------*/
 /*****
-* void AvenidaLuces::Encender
+* void tABB::lower_boundHelp
 ******
 * Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+* 	Se encarga de buscar en los nodos del árbol y los compara con el tipoElem item para ver 
+*	si se cumple que el valor sea menor o igual. Si no lo encuentra entonces avanzara al nodo
+*	izquierdo y si no se encuentra un elemetno menor o igual, entonces retornara 0
 ******
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+*   -tNodoArbolBin *nodo; Es el puntero en donde se almacena el nodo
+*   -tipoElem item; Es el elemento en el que se debe comparar el valor
 ******
 * Returns:
-* 	No retorna nada ya que es una funcion void
+* 	retorna 0, esto pasará solo si no se encuentra el elemento en el árbol
 *****/
 int tABB::lower_boundHelp(tNodoArbolBin *nodo, tipoElem item){
 	if(nodo->info <= item) return nodo->info;
