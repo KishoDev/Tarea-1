@@ -28,10 +28,11 @@ class AvenidaLuces{
 * void AvenidaLuces::Encender
 ******
 * Resumen:
-* 	Si el poste numero i no esta encendido (no se encuentra en el ABB), se enciende (se inserta en el ABB).
+* 	Si el poste en la posición i no está encendido (no se encuentra en el ABB), se enciende
+*   (se inserta en el ABB), si ya lo está no ocurre nada.
 ******
 * Input:
-*   -int i; es un entero que representa el número de poste que hay que encender, si no lo está.
+*   -int i; es un entero que representa la posición del poste que hay que encender, si no lo está.
 ******
 * Returns:
 * 	No retorna nada ya que es una funcion void
