@@ -9,7 +9,7 @@ Formas de compilación utilizadas:
  Para los casos de pruebas se utilizó el compilador GCC en su versión 13.1.1 con el comando "g++ archivo.cpp -o output -Wall".
  
  Para el problema 2 seguir las siguientes instrucciones
-  Para compilar el programa se necesitan dos archivos: 'Tarea2_ejer2.cpp' y 'TDA de ABB.hpp'. Ambos archivos deben estar en la 
+  Para compilar el programa se necesitan dos archivos: 'problema2.cpp' y 'TDA de ABB.hpp'. Ambos archivos deben estar en la 
   misma carpeta al momento de ser compilado
   
   Formas de compilación utilizada:
