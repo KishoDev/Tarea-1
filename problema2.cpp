@@ -21,19 +21,7 @@ class AvenidaLuces{
 		void Encender(int i);
 		int CuantosEncender(int i);
 		void PararPrograma();
-		int getPostesEncendidos();
-		void mostrarArbolp();
 };
-
-
-void AvenidaLuces::mostrarArbolp(){
-	postes.mostrarArbol();
-}
-
-int AvenidaLuces::getPostesEncendidos(){
-	return PostesEncendidos;
-}
-
 
 /*---------------------------------------------------------------------------------------*/
 /*****
@@ -170,4 +158,3 @@ int main(){
 	LucesporArreglar();
 	return 0;
 }
-
