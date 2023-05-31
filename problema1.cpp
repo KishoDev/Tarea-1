@@ -103,3 +103,7 @@ void secNucleotidos(){
   delete[] newNucls; 
 }
 
+int main(){
+  secNucleotidos();
+  return 0;
+}
