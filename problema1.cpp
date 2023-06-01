@@ -5,17 +5,23 @@
 
 using namespace std;
 
+/*---------------------------------------------------------------------------------------*/
 /*****
 * void secNucleotidos()
 ******
-* RESUMEN:
-*     Ejecución del programa principal. Se abre el archivo "secuencias-nucleotidos.txt" y recibe la información contenida. Se ejecutan las 
-*     instrucciones de inserción, borrado y cambio de nucleótidos n veces para cada nucleótido a modificar a base del nucleótido base dado.
-*     Tras realizar las instrucciones dadas en el archivo, lo cierra y abre el archivo de escritura "secuencias-reconstruidas.txt", en donde
-*     se inserta los nucleótidos modificados.
+* Resumen:
+* 	Ejecución del programa principal. Se abre el archivo "secuencias-nucleotidos.txt" y recibe la información contenida. Se ejecutan las 
+*   instrucciones de inserción, borrado y cambio de nucleótidos n veces para cada nucleótido a modificar a base del nucleótido base dado.
+*   Tras realizar las instrucciones dadas en el archivo, lo cierra y abre el archivo de escritura "secuencias-reconstruidas.txt", en donde
+*   se inserta los nucleótidos modificados.
 ******
-*     No retorna nada ya que es una función void.
+* Input:
+*   No recibe ningun parámetro.
+******
+* Returns:
+* 	No retorna nada ya que es una funcion void
 *****/
+
 void secNucleotidos(){
   fstream fileStream;
   int largSecBase, cantSecs, cantMods;
