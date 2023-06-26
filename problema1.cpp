@@ -7,6 +7,8 @@ using namespace std;
 void operaciones(){
     string operacion, usuario, clave;
     bool flag = true;
+    Login login;
+
     while(flag){
 
         cin>>operacion>>usuario>>clave;
@@ -14,11 +16,11 @@ void operaciones(){
         if("FINALIZAR"== operacion){
             flag=false;
         }else if("INICIAR_SESION" == operacion){
-            //nombreTDA.iniciar_sesion(string usuario, string clave)
+            //login.iniciar_sesion(string usuario, string clave)
         }else if("REGISTRAR" == operacion){
-            //nombreTDA.crear_nuevo_usuario(string usuario, string clave);
+            //login.crear_nuevo_usuario(string usuario, string clave);
         }else if("ACTUALIZAR" == operacion){
-            //nombreTDA.cambiar_clave(string usuario, string nueva_clave);
+            //login.cambiar_clave(string usuario, string nueva_clave);
         }
     }
 }
