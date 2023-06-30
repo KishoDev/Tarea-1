@@ -2,4 +2,4 @@ Nombre: Alvaro Aceituno Rol: 202273520-1 Paralelo: 203
 Nombre: Vicente Galaz Rol: 202273554-6 Paralelo: 203
 Nombre: Giselle Goméz Rol: 202273591-0 Paralelo: 200
 
-Lo que programo cada uno, en este caso todos programamos juntos todas las funciones.
+En esta tarea todos programamos y comentamos en ambos problemas.
