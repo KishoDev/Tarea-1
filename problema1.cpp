@@ -1,13 +1,29 @@
 #include<iostream>
 #include<string>
-#include "TDA_Login.cpp"
+#include "TDA_Login.hpp"
 
 using namespace std;
+
+/*****
+* void operaciones
+******
+* Es una función que se dedica a recibir los datos de entrada y obtener la operacion, el usuario y la clave. Para después usar las operaciones del TDA Login
+******
+* Input:
+* No recibe ningún parametro ya que es una función void
+*
+******
+* Returns:
+* no retorna nada ya que es una funcion void
+*****/
+
+
+
 
 void operaciones(){
     string operacion, usuario, clave;
     bool flag = true;
-    Login login;
+    //Login login;
 
     while(flag){
 
@@ -20,7 +36,7 @@ void operaciones(){
         }else if("REGISTRAR" == operacion){
             //login.crear_nuevo_usuario(string usuario, string clave);
         }else if("ACTUALIZAR" == operacion){
-            //login.cambiar_clave(string usuario, string nueva_clave);
+            //login.cambiar_clave(string usuario, string clave);
         }
     }
 }
