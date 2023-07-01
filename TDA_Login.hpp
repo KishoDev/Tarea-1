@@ -54,16 +54,17 @@ class Login{
 
 
 /*****
-* TipoFunción NombreFunción
+* int Login::p
 ******
-* Resumen Función
+* Resuelve las coliciones del hashing.
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
+* - tipoClave k; es la clave para acceder la elemento.
+* - int i; 
 * .......
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* Retorna un entero de la nueva posición, la multiplicación de i por C.
 *****/
 int Login::p(tipoClave k, int i) {
 	return i*C;
@@ -71,16 +72,18 @@ int Login::p(tipoClave k, int i) {
 
 
 /*****
-* TipoFunción NombreFunción
+* int Login::hashInsert
 ******
-* Resumen Función
+* Inserta el elemento en el hashing, si la posición ya esta ocupada llama a la funcion p.
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
+* ranura HT[]; es el arreglo en donde se ubica el hashing.
+* tipoClave k; es la clave para acceder al elemento.
+* tipoInfo I; es la informacion del elemento.
 * .......
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+*     Retorna 0 si ... y 1 si ... .
 *****/
 int Login::hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
 	int inicio, i;
@@ -101,7 +104,8 @@ int Login::hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
 * Busca el elemento en el hashing y si lo encuentra se accede a él, en caso contrario retorna un valor invalido
 ******
 * Input:
-* rabura HT[]; es el arreglo en donde se ubica el hashing, tipoClave k; es la clave para acceder al elemento
+* - ranura HT[]; es el arreglo en donde se ubica el hashing.
+* - tipoClave k; es la clave para acceder al elemento
 * .......
 ******
 * Returns:
