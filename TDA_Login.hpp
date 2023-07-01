@@ -96,16 +96,16 @@ int Login::hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
 }
 
 /*****
-* TipoFunción NombreFunción
+* tipoInfo Login::hashSearch
 ******
-* Resumen Función
+* Busca el elemento en el hashing y si lo encuentra se accede a él, en caso contrario retorna un valor invalido
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
+* rabura HT[]; es el arreglo en donde se ubica el hashing, tipoClave k; es la clave para acceder al elemento
 * .......
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* Retorna el elemento del hashing o puede retornar un valor invalido
 *****/
 tipoInfo Login::hashSearch(ranura HT[], tipoClave k) {
 	int inicio, i;
@@ -117,16 +117,19 @@ tipoInfo Login::hashSearch(ranura HT[], tipoClave k) {
 }
 
 /*****
-* TipoFunción NombreFunción
+* bool Login::iniciar_sesion
 ******
-* Resumen Función
+* Dado el nombre usuario debe verificar si el usuario está registrado, en caso de no estarlo imprime
+por pantalla “El usuario no se encuentra registrado” y retornar false
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
+*	string usuario; es el nombre del usuario
+*	string clave; es la clave que esta asociada al usuario para iniciar sesión
 * .......
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* Si el usuario está registrado y la contraseña coincide imprime “Sesion iniciada con exito” y retornar
+* true.
 *****/
 bool Login::iniciar_sesion(string usuario, string clave){
 	//Por completar
@@ -134,16 +137,19 @@ bool Login::iniciar_sesion(string usuario, string clave){
 }
 
 /*****
-* TipoFunción NombreFunción
+* bool Login::crear_nuevo_usuario
 ******
-* Resumen Función
+*  Crea un nuevo usuario y se inserta sus datos en el hashing,pero antes verifica si el
+*   usuario ya se encuentra registrado 
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
+* 	string usuario; es el nombre del usuario
+*	string clave; es la clave que esta asocida al usuario
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+*  retorna true y imprime “Usuario registrado con exito”, si se logra crear el ususario, en caso 
+*  contrario retorna false y puede imprimir “La clave debe tener al menos 8 caracteres” o
+*  “El usuario ya se encuentra registrado” 
 *****/
 bool Login::crear_nuevo_usuario(string usuario, string clave){
 	//Por completar
@@ -151,16 +157,18 @@ bool Login::crear_nuevo_usuario(string usuario, string clave){
 }
 
 /*****
-* TipoFunción NombreFunción
+* bool Login::cambiar_clave
 ******
-* Resumen Función
+* Cambia la clave del usuario, pero antes verifica si el usuario se encuentra en el hashing
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
+*	string usuario; es el nombre del usuario
+*	string nueva_clave; es la nueva clave que estará asociada al usuario
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+*   retorna true si la clave es actualizada con exito y imprime “Clave actualizada con exito”, 
+*   retona false si el usuario no esta registrado e imprime “El usuario no se encuentra registrado” o
+*   si no cumple con el minimo de caracters “La clave debe tener al menos 8 caracteres”
 *****/
 bool Login::cambiar_clave(string usuario, string nueva_clave){
 	//Por completar
