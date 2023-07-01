@@ -56,15 +56,15 @@ class Login{
 /*****
 * int Login::p
 ******
-* Resuelve las coliciones del hashing.
+*	Resuelve las coliciones del hashing.
 ******
 * Input:
-* - tipoClave k; es la clave para acceder la elemento.
-* - int i; 
+* 	- tipoClave k; es la clave para acceder la elemento.
+* 	- int i; es el numero de colisiones 
 * .......
 ******
 * Returns:
-* Retorna un entero de la nueva posición, la multiplicación de i por C.
+* 	Retorna un entero de la nueva posición, la multiplicación de i por C.
 *****/
 int Login::p(tipoClave k, int i) {
 	return i*C;
@@ -77,13 +77,13 @@ int Login::p(tipoClave k, int i) {
 * Inserta el elemento en el hashing, si la posición ya esta ocupada llama a la funcion p.
 ******
 * Input:
-* ranura HT[]; es el arreglo en donde se ubica el hashing.
-* tipoClave k; es la clave para acceder al elemento.
-* tipoInfo I; es la informacion del elemento.
-* .......
+* 	ranura HT[]; es el arreglo en donde se ubica el hashing.
+* 	tipoClave k; es la clave para acceder al elemento.
+* 	tipoInfo I; es la informacion del elemento.
 ******
 * Returns:
-*     Retorna 0 si ... y 1 si ... .
+*     Retorna 0 si la inserción no  es exitosa y significa que la clave es repetida y 
+*     retorna 1 si se inserto sin ningun problema
 *****/
 int Login::hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
 	int inicio, i;
